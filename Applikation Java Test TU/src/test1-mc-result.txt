@@ -1,0 +1,109 @@
+14
+
+Folgende Antworten wurden erwartet und dienen als Grundlage für die Beurteilung:
+
+ 1. x sei eine Referenz auf einen Knoten (Typ Node) in einer einfach verketteten Liste
+    mit mindestens einem existierenden Nachfolger (in der Objektvariablen next).
+    Welche der folgenden Anweisungs-Sequenzen entfernen den direkten Nachfolger von x
+    aus einer Liste, ändern sonst aber nichts?
+
+    Falsch:  Node n = x.next.next; n.next = x;
+    Falsch:  Node d = x.next; d = d.next;
+    Richtig: x.next = x.next.next;
+    Richtig: Node d = x.next; x.next = d.next;
+    Richtig: Node n = x.next.next; x.next = n;
+
+ 2. Welche der folgenden Aussagen stimmen in Bezug auf die Innen- und Außensicht
+    eines abstrakten Datentyps?
+
+    Richtig: Die Innensicht beschreibt Implementierungsdetails.
+    Richtig: Private Methoden beziehen sich nicht auf die Außensicht.
+    Richtig: Public Methoden betreffen die Außen- und Innensicht.
+    Richtig: Die Außensicht beschreibt, was für die Verwendung nötig ist.
+    Richtig: Zur besseren Wartbarkeit sollen Objektvariablen  private  sein.
+
+ 3. Welche der folgenden Aussagen müssen für jede Verwendung von
+    this(...)  bzw.  this  in einem Konstruktor zutreffen?
+
+    Richtig: this  referenziert das Objekt, das gerade initialisiert wird.
+    Richtig: Zuweisungen an  this  sind verboten.
+    Richtig: this(...);  darf nur als erste Anweisung vorkommen.
+    Falsch:  this  ist nur in  static  Konstruktoren verwendbar.
+    Falsch:  this(...);  darf nur als letzte Anweisung vorkommen.
+
+ 4. t sei eine Variable mit einem einfachen (unbalancierten) binären Suchbaum
+    ganzer Zahlen, der durch diese Anweisungen aufgebaut wurde:
+        STree t = new STree(); t.add(7); t.add(9); t.add(4);
+    Welche der folgenden Aussagen treffen auf t zu?
+
+    Richtig: Der Knoten mit Wert 7 ist die Wurzel.
+    Falsch:  Der Knoten mit Wert 4 ist die Wurzel.
+    Falsch:  Der Knoten mit Wert 7 ist ein Blattknoten.
+    Falsch:  Der Baum hat eine Tiefe von 3.
+    Richtig: Der Knoten mit Wert 9 ist ein Blattknoten.
+
+ 5. T sei ein Referenztyp (Klasse oder Interface), und x sei eine durch
+    R x = new S();  deklarierte Variable, wobei der Compiler keinen Fehler meldet.
+    Welche der folgenden Aussagen treffen für alle passenden R, S, T und x zu?
+
+    Richtig: (T)x  ändert den deklarierten Typ von x auf T.
+    Richtig: (T)x  liefert keinen Laufzeitfehler wenn R Untertyp von T ist.
+    Richtig: (T)null  liefert zur Laufzeit keinen Fehler.
+    Falsch:  (T)x  liefert Laufzeitfehler wenn T nicht Untertyp von R ist.
+    Richtig: (T)x  liefert Laufzeitfehler wenn S nicht Untertyp von T ist.
+
+
+Die Multiple-Choice-Fragen wurden folgendermaßen beantwortet
+(das sind nur Ihre Antworten, keine Aussage über Korrektheit):
+
+ 1. x sei eine Referenz auf einen Knoten (Typ Node) in einer einfach verketteten Liste
+    mit mindestens einem existierenden Nachfolger (in der Objektvariablen next).
+    Welche der folgenden Anweisungs-Sequenzen entfernen den direkten Nachfolger von x
+    aus einer Liste, ändern sonst aber nichts?
+    
+    Richtig:  Node n = x.next.next; n.next = x;
+    Falsch:   Node d = x.next; d = d.next;
+    Falsch:   x.next = x.next.next;
+    Falsch:   Node d = x.next; x.next = d.next;
+    Falsch:   Node n = x.next.next; x.next = n;
+
+ 2. Welche der folgenden Aussagen stimmen in Bezug auf die Innen- und Außensicht
+    eines abstrakten Datentyps?
+    
+    Falsch:   Die Innensicht beschreibt Implementierungsdetails.
+    Richtig:  Private Methoden beziehen sich nicht auf die Außensicht.
+    Richtig:  Public Methoden betreffen die Außen- und Innensicht.
+    Richtig:  Die Außensicht beschreibt, was für die Verwendung nötig ist.
+    Richtig:  Zur besseren Wartbarkeit sollen Objektvariablen  private  sein.
+
+ 3. Welche der folgenden Aussagen müssen für jede Verwendung von
+    this(...)  bzw.  this  in einem Konstruktor zutreffen?
+    
+    Richtig:  this  referenziert das Objekt, das gerade initialisiert wird.
+    Falsch:   Zuweisungen an  this  sind verboten.
+    Falsch:   this(...);  darf nur als erste Anweisung vorkommen.
+    Falsch:   this  ist nur in  static  Konstruktoren verwendbar.
+    Falsch:   this(...);  darf nur als letzte Anweisung vorkommen.
+
+ 4. t sei eine Variable mit einem einfachen (unbalancierten) binären Suchbaum
+    ganzer Zahlen, der durch diese Anweisungen aufgebaut wurde:
+        STree t = new STree(); t.add(7); t.add(9); t.add(4);
+    Welche der folgenden Aussagen treffen auf t zu?
+    
+    Richtig:  Der Knoten mit Wert 7 ist die Wurzel.
+    Falsch:   Der Knoten mit Wert 4 ist die Wurzel.
+    Falsch:   Der Knoten mit Wert 7 ist ein Blattknoten.
+    Falsch:   Der Baum hat eine Tiefe von 3.
+    Falsch:   Der Knoten mit Wert 9 ist ein Blattknoten.
+
+ 5. T sei ein Referenztyp (Klasse oder Interface), und x sei eine durch
+    R x = new S();  deklarierte Variable, wobei der Compiler keinen Fehler meldet.
+    Welche der folgenden Aussagen treffen für alle passenden R, S, T und x zu?
+    
+    Falsch:   (T)x  ändert den deklarierten Typ von x auf T.
+    Falsch:   (T)x  liefert keinen Laufzeitfehler wenn R Untertyp von T ist.
+    Falsch:   (T)null  liefert zur Laufzeit keinen Fehler.
+    Falsch:   (T)x  liefert Laufzeitfehler wenn T nicht Untertyp von R ist.
+    Richtig:  (T)x  liefert Laufzeitfehler wenn S nicht Untertyp von T ist.
+
+

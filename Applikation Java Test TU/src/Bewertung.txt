@@ -1,0 +1,31 @@
+Diese Datei dokumentiert die bisher in EP2 erreichten Punkte.
+
+-- Übung 1
+In der Vorbeurteilung wurde Ihre Abgabe mit ++~ kategorisiert.
+
+Sie haben dann in der ersten Übung 4 von 5 Punkte bekommen.
+Sie haben bei der Ad-hoc Aufgabe 4 von 4 Punkte bekommen.
+
+-- Übung 2
+In der Vorbeurteilung wurde Ihre Abgabe mit -~~~ kategorisiert.
+
+Sie haben folgendes Feedback bekommen: A1 nicht gemacht، A3/A4 funktionieren nicht richtig 
+Sie haben dann in der ersten Übung 2 von 5 Punkte bekommen.
+Sie haben bei der Ad-hoc Aufgabe 4 von 4 Punkte bekommen.
+
+-- Übung 3
+In der Vorbeurteilung wurde Ihre Abgabe mit +~~+ kategorisiert.
+
+Sie haben folgendes Feedback bekommen: Participations2 nicht implementiert 
+Sie haben dann in der ersten Übung 4 von 5 Punkte bekommen.
+Sie haben bei der Ad-hoc Aufgabe 3 von 4 Punkte bekommen.
+
+-- Übung 4
+In der Vorbeurteilung wurde Ihre Abgabe mit +++ kategorisiert.
+
+Sie haben dann in der ersten Übung 5 von 5 Punkte bekommen.
+Sie haben bei der Ad-hoc Aufgabe 4 von 4 Punkte bekommen.
+
+
+Sie haben insgesamt 30 Punkte.
+
