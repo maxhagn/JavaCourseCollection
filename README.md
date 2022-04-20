@@ -1,3 +1,3 @@
-# Introduction to Programming II
+# Introduction to ProgrammingI I & II
 
-This repository contains some assignments that should be developed for the course Introduction to Programming Two in the Java programming language. 
+This repository contains some assignments that should be developed for the course Introduction to Programming I and II in the Java programming language. 
