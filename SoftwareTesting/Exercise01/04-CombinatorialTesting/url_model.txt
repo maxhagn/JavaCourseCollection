@@ -1,0 +1,20 @@
+# Hagn Maximilian
+# 11808237
+# Exercise 01
+
+# PICT model for testing URLs composed of different elements
+
+Scheme:         https://, http://, ftp://
+Subdomain:      www., mail., support.,
+Domain:         example., google., my-domain.,
+IP:             192.168.138.50,
+TopLevelDomain: com, de, ac.at, international, io,
+PortNumber:     :1, :65535,
+Path:           /home, /home/items/1/view/, /users/profiles/123/tickets/12,
+QuerySeperator: ?,
+QueryString:    id=123, sort=asc, page=555, filter=active, user=max+hagn,
+Fragment:       #section, #top, #user.profile, #footer,
+
+IF [QueryString] <> "" THEN [QuerySeperator] = "?";
+IF [IP] <> "" THEN [Subdomain] = "" and [Domain] = "" and [TopLevelDomain] = "";
+IF [IP] = "" THEN [Domain] <> "" and [TopLevelDomain] <> "";

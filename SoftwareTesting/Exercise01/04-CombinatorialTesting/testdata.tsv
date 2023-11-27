@@ -1,0 +1,41 @@
+Scheme	Subdomain	Domain	IP	TopLevelDomain	PortNumber	Path	QuerySeperator	QueryString	Fragment
+http://		google.		io	:65535	/users/profiles/123/tickets/12			
+https://	www.	example.		de		/home/items/1/view/	?		#user.profile
+ftp://	support.	my-domain.		io	:1	/home	?	sort=asc	#top
+ftp://	mail.	google.		de	:65535		?	filter=active	#section
+http://	mail.	my-domain.		international		/users/profiles/123/tickets/12	?	sort=asc	#footer
+https://		example.		de	:1		?	sort=asc	
+http://	support.	example.		de	:65535	/users/profiles/123/tickets/12	?	id=123	#top
+https://			192.168.138.50			/home	?	id=123	#section
+http://			192.168.138.50		:1		?	page=555	#user.profile
+ftp://	www.	google.		com	:1	/home/items/1/view/	?	id=123	#footer
+https://	support.	my-domain.		com					#top
+https://	www.	my-domain.		international	:65535	/home/items/1/view/	?	id=123	
+https://	mail.	example.		ac.at	:65535	/home	?	page=555	#footer
+https://	www.	google.		io	:65535	/users/profiles/123/tickets/12	?	user=max+hagn	#user.profile
+http://		my-domain.		ac.at	:1	/home/items/1/view/	?	user=max+hagn	#section
+ftp://	support.	google.		international		/home/items/1/view/	?	page=555	#top
+http://	www.	google.		com	:65535	/home	?	sort=asc	#user.profile
+ftp://	support.	example.		international		/home	?	user=max+hagn	
+ftp://	www.	example.		ac.at	:1				#footer
+ftp://			192.168.138.50		:65535	/home/items/1/view/	?	sort=asc	#top
+https://			192.168.138.50		:1	/users/profiles/123/tickets/12	?	filter=active	#footer
+https://	mail.	example.		international	:1	/home			#section
+ftp://	mail.	example.		com		/users/profiles/123/tickets/12	?	user=max+hagn	
+https://	www.	example.		io		/users/profiles/123/tickets/12	?	page=555	#section
+https://		my-domain.		de	:1	/home	?	page=555	
+ftp://		example.		com	:65535	/home/items/1/view/	?	page=555	#section
+ftp://	support.	my-domain.		ac.at		/home/items/1/view/	?	filter=active	#user.profile
+http://	www.	example.		com		/home	?	filter=active	
+https://			192.168.138.50		:1		?	user=max+hagn	#top
+http://	mail.	google.		ac.at	:1	/users/profiles/123/tickets/12	?	id=123	#top
+http://	mail.	my-domain.		io	:1	/home/items/1/view/	?	filter=active	#footer
+http://	mail.	my-domain.		international			?	filter=active	#user.profile
+http://	www.	example.		io			?	filter=active	#top
+ftp://	support.	google.		de		/users/profiles/123/tickets/12	?	user=max+hagn	#footer
+https://			192.168.138.50			/home/items/1/view/			
+http://	support.	google.		ac.at	:1	/home/items/1/view/	?	sort=asc	#section
+https://	mail.	my-domain.		io	:65535		?	id=123	#user.profile
+https://		my-domain.		international	:65535		?	id=123	#user.profile
+http://	support.	my-domain.		de		/home			#user.profile
+http://		google.		ac.at		/home	?	filter=active	

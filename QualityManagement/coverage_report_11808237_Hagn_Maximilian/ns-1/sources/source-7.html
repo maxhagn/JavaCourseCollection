@@ -1,0 +1,497 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > MovieManagementController</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">at.ac.tuwien.qs.movierental</a>
+</div>
+
+<h1>Coverage Summary for Class: MovieManagementController (at.ac.tuwien.qs.movierental)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">MovieManagementController</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/17)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/200)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package at.ac.tuwien.qs.movierental;
+&nbsp;
+&nbsp;import at.ac.tuwien.qs.movierental.ui.controls.BooleanCell;
+&nbsp;import at.ac.tuwien.qs.movierental.ui.controls.EuroCell;
+&nbsp;import javafx.collections.ObservableList;
+&nbsp;import javafx.collections.transformation.FilteredList;
+&nbsp;import javafx.collections.transformation.SortedList;
+&nbsp;import javafx.event.ActionEvent;
+&nbsp;import javafx.fxml.FXML;
+&nbsp;import javafx.scene.Node;
+&nbsp;import javafx.scene.control.*;
+&nbsp;import javafx.scene.image.Image;
+&nbsp;import javafx.scene.image.ImageView;
+&nbsp;import javafx.stage.FileChooser;
+&nbsp;
+&nbsp;import java.io.File;
+&nbsp;import java.io.FileInputStream;
+&nbsp;import java.io.FileNotFoundException;
+&nbsp;import java.text.NumberFormat;
+&nbsp;import java.time.Year;
+&nbsp;import java.time.format.DateTimeParseException;
+&nbsp;
+<b class="nc">&nbsp;public class MovieManagementController {</b>
+&nbsp;
+<b class="nc">&nbsp;    private static final Image NO_COVER = new Image(RentalController.class.getResourceAsStream(&quot;/images/cover.png&quot;));</b>
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private TableView&lt;Movie&gt; tblMovies;
+&nbsp;    @FXML
+&nbsp;    private TableColumn&lt;Movie, Long&gt; tcMovieID;
+&nbsp;    @FXML
+&nbsp;    private TableColumn&lt;Movie, String&gt; tcTitle;
+&nbsp;    @FXML
+&nbsp;    private TableColumn&lt;Movie, String&gt; tcSubtitle;
+&nbsp;    @FXML
+&nbsp;    private TableColumn&lt;Movie, String&gt; tcGenre;
+&nbsp;    @FXML
+&nbsp;    private TableColumn&lt;Movie, String&gt; tcAgeRating;
+&nbsp;    @FXML
+&nbsp;    private TableColumn&lt;Movie, String&gt; tcLanguage;
+&nbsp;    @FXML
+&nbsp;    private TableColumn&lt;Movie, Year&gt; tcYearPublished;
+&nbsp;    @FXML
+&nbsp;    private TableColumn&lt;Movie, String&gt; tcDirector;
+&nbsp;    @FXML
+&nbsp;    private TableColumn&lt;Movie, Integer&gt; tcPrice;
+&nbsp;    @FXML
+&nbsp;    private TableColumn&lt;Movie, Float&gt; tcRating;
+&nbsp;    @FXML
+&nbsp;    private TableColumn&lt;Movie, Boolean&gt; tcSeries;
+&nbsp;    @FXML
+&nbsp;    private TableColumn&lt;Movie, Integer&gt; tcStock;
+&nbsp;    @FXML
+&nbsp;    private TableColumn&lt;Movie, Integer&gt; tcAvailable;
+&nbsp;    @FXML
+&nbsp;    private TableColumn&lt;Movie, Integer&gt; tcLent;
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private Label lblMovieID;
+&nbsp;    @FXML
+&nbsp;    private TextField txtTitle;
+&nbsp;    @FXML
+&nbsp;    private ComboBox&lt;String&gt; cbxGenre;
+&nbsp;    @FXML
+&nbsp;    private ComboBox&lt;String&gt; cbxLanguage;
+&nbsp;    @FXML
+&nbsp;    private TextField txtDirector;
+&nbsp;    @FXML
+&nbsp;    private TextField txtYearPublished;
+&nbsp;    @FXML
+&nbsp;    private Slider sliStock;
+&nbsp;    @FXML
+&nbsp;    private TextField txtStock;
+&nbsp;    @FXML
+&nbsp;    private TextField txtSubtitle;
+&nbsp;    @FXML
+&nbsp;    private ComboBox&lt;String&gt; cbxAgeRating;
+&nbsp;    @FXML
+&nbsp;    private TextField txtPriceInCent;
+&nbsp;    @FXML
+&nbsp;    private TextField txtRating;
+&nbsp;    @FXML
+&nbsp;    private CheckBox chkSeries;
+&nbsp;    @FXML
+&nbsp;    private Label lblAvailable;
+&nbsp;    @FXML
+&nbsp;    private Label lblLent;
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private ImageView imgCover;
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private TextField txtFilter;
+&nbsp;    @FXML
+&nbsp;    private ToggleButton tglFilter;
+&nbsp;
+&nbsp;    private File fileCover;
+&nbsp;
+&nbsp;    private Movie currentMovie;
+&nbsp;
+&nbsp;    private ObservableList&lt;Movie&gt; movieObservableList;
+&nbsp;    private FilteredList&lt;Movie&gt; filteredMovies;
+<b class="nc">&nbsp;    private static final NumberFormat NUMBER_FORMAT = NumberFormat.getNumberInstance();</b>
+&nbsp;
+&nbsp;    static {
+<b class="nc">&nbsp;        NUMBER_FORMAT.setMaximumFractionDigits(0);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private MovieDAO movieDAO;
+&nbsp;    private RatingService ratingService;
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private void initialize() {
+<b class="nc">&nbsp;        this.cbxGenre.getItems().addAll(&quot;Normal&quot;, &quot;Kinder&quot;, &quot;Klassiker&quot;, &quot;Horror&quot;, &quot;SciFi&quot;, &quot;Fantasy&quot;);</b>
+<b class="nc">&nbsp;        this.cbxLanguage.getItems().addAll(&quot;Deutsch&quot;, &quot;English&quot;, &quot;Français&quot;, &quot;Español&quot;);</b>
+<b class="nc">&nbsp;        this.cbxAgeRating.getItems().addAll(&quot;FSK 0&quot;, &quot;FSK 6&quot;, &quot;FSK 12&quot;, &quot;FSK 16&quot;, &quot;FSK 18&quot;, &quot;RATED 21&quot;);</b>
+<b class="nc">&nbsp;        this.showMovieDetails(null);</b>
+<b class="nc">&nbsp;        this.tcMovieID.setCellValueFactory(cellData -&gt; cellData.getValue().idProperty());</b>
+<b class="nc">&nbsp;        this.tcTitle.setCellValueFactory(cellData -&gt; cellData.getValue().titleProperty());</b>
+<b class="nc">&nbsp;        this.tcSubtitle.setCellValueFactory(cellData -&gt; cellData.getValue().subtitleProperty());</b>
+<b class="nc">&nbsp;        this.tcGenre.setCellValueFactory(cellData -&gt; cellData.getValue().genreProperty());</b>
+<b class="nc">&nbsp;        this.tcAgeRating.setCellValueFactory(cellData -&gt; cellData.getValue().ageRatingProperty());</b>
+<b class="nc">&nbsp;        this.tcLanguage.setCellValueFactory(cellData -&gt; cellData.getValue().languageProperty());</b>
+<b class="nc">&nbsp;        this.tcYearPublished.setCellValueFactory(cellData -&gt; cellData.getValue().yearPublishedProperty());</b>
+<b class="nc">&nbsp;        this.tcPrice.setCellValueFactory(cellData -&gt; cellData.getValue().priceInCentsProperty());</b>
+<b class="nc">&nbsp;        this.tcPrice.setCellFactory(param -&gt; new EuroCell());</b>
+<b class="nc">&nbsp;        this.tcDirector.setCellValueFactory(cellData -&gt; cellData.getValue().directorProperty());</b>
+<b class="nc">&nbsp;        this.tcRating.setCellValueFactory(cellData -&gt; cellData.getValue().ratingProperty());</b>
+<b class="nc">&nbsp;        this.tcSeries.setCellValueFactory(cellData -&gt; cellData.getValue().seriesProperty());</b>
+<b class="nc">&nbsp;        this.tcSeries.setCellFactory(param -&gt; new BooleanCell());</b>
+<b class="nc">&nbsp;        this.tcStock.setCellValueFactory(cellData -&gt; cellData.getValue().stockProperty());</b>
+<b class="nc">&nbsp;        this.txtStock.textProperty().bindBidirectional(sliStock.valueProperty(), NUMBER_FORMAT);</b>
+<b class="nc">&nbsp;        this.txtFilter.textProperty().addListener((observable, oldValue, newValue) -&gt; {</b>
+<b class="nc">&nbsp;            if (newValue == null || newValue.isEmpty()) {</b>
+<b class="nc">&nbsp;                this.tglFilter.setSelected(false);</b>
+&nbsp;            } else {
+<b class="nc">&nbsp;                this.tglFilter.setSelected(true);</b>
+&nbsp;            }
+<b class="nc">&nbsp;            filterTable(newValue);</b>
+&nbsp;        });
+<b class="nc">&nbsp;        this.tblMovies.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -&gt; showMovieDetails(newValue));</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setMovies(ObservableList&lt;Movie&gt; movieObservableList) {
+<b class="nc">&nbsp;        this.movieObservableList = movieObservableList;</b>
+<b class="nc">&nbsp;        this.tblMovies.setItems(this.movieObservableList);</b>
+<b class="nc">&nbsp;        this.filteredMovies = new FilteredList&lt;&gt;(this.movieObservableList, p -&gt; true);</b>
+<b class="nc">&nbsp;        SortedList&lt;Movie&gt; sortedData = new SortedList&lt;&gt;(this.filteredMovies);</b>
+<b class="nc">&nbsp;        sortedData.comparatorProperty().bind(tblMovies.comparatorProperty());</b>
+<b class="nc">&nbsp;        tblMovies.setItems(sortedData);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private void filterTable(String filter) {
+<b class="nc">&nbsp;        MovieManagementController.this.filteredMovies.setPredicate(movie -&gt; {</b>
+<b class="nc">&nbsp;            if (filter == null || filter.isEmpty()) {</b>
+<b class="nc">&nbsp;                return true;</b>
+&nbsp;            }
+<b class="nc">&nbsp;            String lowerCaseFilter = filter.toLowerCase();</b>
+<b class="nc">&nbsp;            return (movie.getId() != null &amp;&amp; movie.getId().toString().toLowerCase().contains(lowerCaseFilter)) ||</b>
+<b class="nc">&nbsp;                    (movie.getTitle() != null &amp;&amp; movie.getTitle().toLowerCase().contains(lowerCaseFilter)) ||</b>
+<b class="nc">&nbsp;                    (movie.getSubtitle() != null &amp;&amp; movie.getSubtitle().toLowerCase().contains(lowerCaseFilter)) ||</b>
+<b class="nc">&nbsp;                    (movie.getGenre() != null &amp;&amp; movie.getGenre().toLowerCase().contains(lowerCaseFilter)) ||</b>
+<b class="nc">&nbsp;                    (movie.getDirector() != null &amp;&amp; movie.getDirector().toLowerCase().contains(lowerCaseFilter) ||</b>
+<b class="nc">&nbsp;                            (movie.getYearPublished() != null &amp;&amp; movie.getYearPublished().toString().toLowerCase().contains(lowerCaseFilter)));</b>
+&nbsp;        });
+&nbsp;    }
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private void filter() {
+<b class="nc">&nbsp;        if (this.tglFilter.isSelected()) {</b>
+<b class="nc">&nbsp;            this.filterTable(this.txtFilter.getText());</b>
+&nbsp;        } else {
+<b class="nc">&nbsp;            this.filterTable(null);</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    private void showMovieDetails(Movie movie) {
+<b class="nc">&nbsp;        this.currentMovie = movie;</b>
+<b class="nc">&nbsp;        if (movie != null) {</b>
+<b class="nc">&nbsp;            this.lblMovieID.setText((movie.getId() != null) ? movie.getId().toString() : null);</b>
+<b class="nc">&nbsp;            this.txtTitle.setText((movie.getTitle() != null) ? movie.getTitle() : null);</b>
+<b class="nc">&nbsp;            if (movie.getGenre() != null) {</b>
+<b class="nc">&nbsp;                this.cbxGenre.getSelectionModel().select(movie.getGenre());</b>
+&nbsp;            } else {
+<b class="nc">&nbsp;                this.cbxGenre.getSelectionModel().clearSelection();</b>
+&nbsp;            }
+<b class="nc">&nbsp;            if (movie.getLanguage() != null) {</b>
+<b class="nc">&nbsp;                this.cbxLanguage.getSelectionModel().select(movie.getLanguage());</b>
+&nbsp;            } else {
+<b class="nc">&nbsp;                this.cbxLanguage.getSelectionModel().clearSelection();</b>
+&nbsp;            }
+<b class="nc">&nbsp;            this.txtDirector.setText((movie.getDirector() != null) ? movie.getDirector() : null);</b>
+<b class="nc">&nbsp;            this.txtYearPublished.setText((movie.getYearPublished() != null) ? movie.getYearPublished().toString() : null);</b>
+<b class="nc">&nbsp;            this.sliStock.setValue((movie.getStock() != null) ? movie.getStock() : 0);</b>
+<b class="nc">&nbsp;            this.txtStock.setText((movie.getStock() != null) ? movie.getStock().toString() : null);</b>
+<b class="nc">&nbsp;            this.txtSubtitle.setText((movie.getSubtitle() != null) ? movie.getSubtitle() : null);</b>
+<b class="nc">&nbsp;            if (movie.getAgeRating() != null) {</b>
+<b class="nc">&nbsp;                this.cbxAgeRating.getSelectionModel().select(movie.getAgeRating());</b>
+&nbsp;            } else {
+<b class="nc">&nbsp;                this.cbxAgeRating.getSelectionModel().clearSelection();</b>
+&nbsp;            }
+<b class="nc">&nbsp;            this.txtPriceInCent.setText((movie.getPriceInCents() != null) ? movie.getPriceInCents().toString() : null);</b>
+<b class="nc">&nbsp;            this.txtRating.setText((movie.getRating() != null) ? movie.getRating().toString() : null);</b>
+<b class="nc">&nbsp;            this.chkSeries.setSelected((movie.getSeries() != null) ? movie.getSeries() : false);</b>
+<b class="nc">&nbsp;            this.lblAvailable.setText(&quot;0&quot;);</b>
+<b class="nc">&nbsp;            this.lblLent.setText(&quot;0&quot;);</b>
+&nbsp;            try {
+<b class="nc">&nbsp;                this.fileCover = movie.getCover();</b>
+<b class="nc">&nbsp;                this.imgCover.setImage((this.fileCover != null) ? new Image(new FileInputStream(this.fileCover)) : NO_COVER);</b>
+<b class="nc">&nbsp;            } catch (FileNotFoundException e) {</b>
+<b class="nc">&nbsp;                this.imgCover.setImage(NO_COVER);</b>
+<b class="nc">&nbsp;                this.fileCover = null;</b>
+<b class="nc">&nbsp;            }</b>
+&nbsp;        } else {
+<b class="nc">&nbsp;            this.lblMovieID.setText(&quot;&quot;);</b>
+<b class="nc">&nbsp;            this.txtTitle.setText(&quot;&quot;);</b>
+<b class="nc">&nbsp;            this.cbxGenre.getSelectionModel().clearSelection();</b>
+<b class="nc">&nbsp;            this.cbxLanguage.getSelectionModel().clearSelection();</b>
+<b class="nc">&nbsp;            this.txtDirector.setText(&quot;&quot;);</b>
+<b class="nc">&nbsp;            this.txtYearPublished.setText(&quot;&quot;);</b>
+<b class="nc">&nbsp;            this.sliStock.setValue(0);</b>
+<b class="nc">&nbsp;            this.txtStock.setText(&quot;0&quot;);</b>
+<b class="nc">&nbsp;            this.txtSubtitle.setText(&quot;&quot;);</b>
+<b class="nc">&nbsp;            this.cbxAgeRating.getSelectionModel().clearSelection();</b>
+<b class="nc">&nbsp;            this.txtPriceInCent.setText(&quot;0&quot;);</b>
+<b class="nc">&nbsp;            this.txtRating.setText(&quot;&quot;);</b>
+<b class="nc">&nbsp;            this.chkSeries.setSelected(false);</b>
+<b class="nc">&nbsp;            this.lblAvailable.setText(&quot;0&quot;);</b>
+<b class="nc">&nbsp;            this.lblLent.setText(&quot;0&quot;);</b>
+<b class="nc">&nbsp;            this.imgCover.setImage(NO_COVER);</b>
+<b class="nc">&nbsp;            this.fileCover = null;</b>
+&nbsp;        }
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private void selectCover(ActionEvent actionEvent) {
+<b class="nc">&nbsp;        FileChooser fileChooser = new FileChooser();</b>
+<b class="nc">&nbsp;        fileChooser.setTitle(&quot;Filmverleih | Lade Foto&quot;);</b>
+<b class="nc">&nbsp;        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter(&quot;Bilddaten&quot;, &quot;*.png&quot;, &quot;*.jpg&quot;, &quot;*.jepg&quot;));</b>
+<b class="nc">&nbsp;        File file = fileChooser.showOpenDialog(((Node) actionEvent.getSource()).getScene().getWindow());</b>
+<b class="nc">&nbsp;        if (file != null &amp;&amp; file.exists()) {</b>
+&nbsp;            try {
+<b class="nc">&nbsp;                this.imgCover.setImage(new Image(new FileInputStream(file)));</b>
+<b class="nc">&nbsp;                this.fileCover = file;</b>
+<b class="nc">&nbsp;            } catch (FileNotFoundException e) {</b>
+<b class="nc">&nbsp;                this.imgCover.setImage(NO_COVER);</b>
+<b class="nc">&nbsp;            }</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private void delete() {
+<b class="nc">&nbsp;        Movie selectedMovie = this.tblMovies.getSelectionModel().getSelectedItem();</b>
+<b class="nc">&nbsp;        this.movieObservableList.remove(selectedMovie);</b>
+<b class="nc">&nbsp;        this.tblMovies.getSelectionModel().clearSelection();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private void persist() {
+<b class="nc">&nbsp;        String errorMessage = &quot;&quot;;</b>
+<b class="nc">&nbsp;        if (this.txtTitle.getText().length() &lt; 3 || this.txtTitle.getText().length() &gt; 250) {</b>
+<b class="nc">&nbsp;            errorMessage += &quot;Der Filmtitel darf nicht mit einem Leerzeichen beginnen oder enden.\n&quot;;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        if (this.txtTitle.getText().length() &lt; 3 || this.txtTitle.getText().length() &gt; 250) {</b>
+<b class="nc">&nbsp;            errorMessage += &quot;Der Filmtitel muss zwischen 3 und 250 Zeichen lang sein.\n&quot;;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        if (this.txtSubtitle.getText() != null &amp;&amp; !this.txtSubtitle.getText().isEmpty() &amp;&amp; (this.txtSubtitle.getText().length() &lt; 3 || this.txtSubtitle.getText().length() &gt; 250)) {</b>
+<b class="nc">&nbsp;            errorMessage += &quot;Der Subtitel darf nicht mit einem Leerzeichen beginnen oder enden.\n&quot;;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        if (this.txtSubtitle.getText() != null &amp;&amp; !this.txtSubtitle.getText().isEmpty() &amp;&amp; this.txtSubtitle.getText().length() &lt; 3 || this.txtSubtitle.getText().length() &gt; 250) {</b>
+<b class="nc">&nbsp;            errorMessage += &quot;Der Subtitel muss zwischen 3 und 250 Zeichen lang sein.\n&quot;;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        if (this.cbxGenre.getSelectionModel().getSelectedItem() == null) {</b>
+<b class="nc">&nbsp;            errorMessage += &quot;Es muss ein Genre ausgewählt werden.\n&quot;;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        if (this.cbxAgeRating.getSelectionModel().getSelectedItem() == null) {</b>
+<b class="nc">&nbsp;            errorMessage += &quot;Es muss eine Altersfreigabe ausgewählt werden.\n&quot;;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        if (this.cbxLanguage.getSelectionModel().getSelectedItem() == null) {</b>
+<b class="nc">&nbsp;            errorMessage += &quot;Es muss eine Sprache ausgewählt werden.\n&quot;;</b>
+&nbsp;        }
+&nbsp;        try {
+<b class="nc">&nbsp;            float rating = Float.parseFloat(this.txtRating.getText());</b>
+<b class="nc">&nbsp;            if (rating &lt; 0 || rating &gt; 5) {</b>
+<b class="nc">&nbsp;                errorMessage += &quot;Das Rating muss zwischen 0 und 5 liegen.\n&quot;;</b>
+&nbsp;            }
+<b class="nc">&nbsp;        } catch (NumberFormatException e) {</b>
+<b class="nc">&nbsp;            errorMessage += &quot;Es muss ein gültiges Rating eingegeben werden.\n&quot;;</b>
+<b class="nc">&nbsp;        }</b>
+<b class="nc">&nbsp;        if (this.txtYearPublished.getText() != null &amp;&amp; !this.txtYearPublished.getText().isEmpty()) {</b>
+&nbsp;            try {
+<b class="nc">&nbsp;                Year year = Year.parse(this.txtYearPublished.getText());</b>
+<b class="nc">&nbsp;                if (year.isBefore(Year.parse(&quot;1800&quot;)) || year.isAfter(Year.now())) {</b>
+<b class="nc">&nbsp;                    errorMessage += &quot;Das Erscheinungsjahr muss nach 1800 und nicht in der Zukunft liegen.\n&quot;;</b>
+&nbsp;                }
+<b class="nc">&nbsp;            } catch (DateTimeParseException e) {</b>
+<b class="nc">&nbsp;                errorMessage += &quot;Das eingegebene Erscheinungsjahr ist ungültig.\n&quot;;</b>
+<b class="nc">&nbsp;            }</b>
+&nbsp;        }
+<b class="nc">&nbsp;        if (this.txtDirector.getText() != null &amp;&amp; !this.txtDirector.getText().isEmpty() &amp;&amp; (this.txtDirector.getText().length() &lt; 3 || this.txtDirector.getText().length() &gt; 250)) {</b>
+<b class="nc">&nbsp;            errorMessage += &quot;Der Name des Regisseur darf nicht mit einem Leerzeichen beginnen oder enden.\n&quot;;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        if (this.txtDirector.getText() != null &amp;&amp; !this.txtDirector.getText().isEmpty() &amp;&amp; this.txtDirector.getText().length() &lt; 3 || this.txtSubtitle.getText().length() &gt; 250) {</b>
+<b class="nc">&nbsp;            errorMessage += &quot;Der Name des Regisseur muss zwischen 3 und 250 Zeichen lang sein.\n&quot;;</b>
+&nbsp;        }
+&nbsp;        try {
+<b class="nc">&nbsp;            int stock = Integer.parseInt(this.txtStock.getText());</b>
+<b class="nc">&nbsp;            if (stock &lt; 0 || stock &gt; 50) {</b>
+<b class="nc">&nbsp;                errorMessage += &quot;Die Anzahl der verfügbaren Filme muss zwischen 0 und 50 liegen.\n&quot;;</b>
+&nbsp;            }
+<b class="nc">&nbsp;        } catch (NumberFormatException e) {</b>
+<b class="nc">&nbsp;            errorMessage += &quot;Die Anzahl der verfügbaren Filme muss zwischen 0 und 50 liegen.\n&quot;;</b>
+<b class="nc">&nbsp;        }</b>
+<b class="nc">&nbsp;        if (!errorMessage.isEmpty()) {</b>
+<b class="nc">&nbsp;            Alert alert = new Alert(Alert.AlertType.ERROR);</b>
+<b class="nc">&nbsp;            alert.setTitle(&quot;Filmverleih | Eingabefehler&quot;);</b>
+<b class="nc">&nbsp;            alert.setHeaderText(&quot;Folgende Daten der Eingabe sind Fehlerhaft&quot;);</b>
+<b class="nc">&nbsp;            alert.setContentText(errorMessage);</b>
+<b class="nc">&nbsp;            alert.showAndWait();</b>
+<b class="nc">&nbsp;        } else {</b>
+<b class="nc">&nbsp;            Movie movie = currentMovie;</b>
+<b class="nc">&nbsp;            if (currentMovie == null) {</b>
+<b class="nc">&nbsp;                movie = new Movie();</b>
+&nbsp;            }
+<b class="nc">&nbsp;            this.fillMovieWithFieldData(movie);</b>
+<b class="nc">&nbsp;            if (currentMovie == null) {</b>
+<b class="nc">&nbsp;                currentMovie = this.movieDAO.create(movie);</b>
+<b class="nc">&nbsp;                this.movieObservableList.add(currentMovie);</b>
+&nbsp;            } else {
+<b class="nc">&nbsp;                this.movieDAO.update(movie);</b>
+&nbsp;            }
+<b class="nc">&nbsp;            this.tblMovies.getSelectionModel().select(currentMovie);</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    private void fillMovieWithFieldData(Movie movie) {
+<b class="nc">&nbsp;        movie.setTitle(this.txtTitle.getText());</b>
+<b class="nc">&nbsp;        movie.setSubtitle(this.txtSubtitle.getText());</b>
+<b class="nc">&nbsp;        movie.setGenre(this.cbxGenre.getSelectionModel().getSelectedItem());</b>
+<b class="nc">&nbsp;        movie.setAgeRating(this.cbxAgeRating.getSelectionModel().getSelectedItem());</b>
+<b class="nc">&nbsp;        movie.setLanguage(this.cbxLanguage.getSelectionModel().getSelectedItem());</b>
+<b class="nc">&nbsp;        movie.setPriceInCents((this.txtPriceInCent.getText() != null &amp;&amp; !this.txtPriceInCent.getText().isEmpty()) ? Integer.parseInt(this.txtPriceInCent.getText()) : null);</b>
+<b class="nc">&nbsp;        movie.setDirector(this.txtDirector.getText());</b>
+<b class="nc">&nbsp;        movie.setRating((this.txtRating.getText() != null &amp;&amp; !this.txtRating.getText().isEmpty()) ? Float.parseFloat(this.txtRating.getText()) : null);</b>
+<b class="nc">&nbsp;        movie.setYearPublished((this.txtYearPublished.getText() != null &amp;&amp; !this.txtYearPublished.getText().isEmpty()) ? Year.parse(this.txtYearPublished.getText()) : null);</b>
+<b class="nc">&nbsp;        movie.setSeries(this.chkSeries.isSelected());</b>
+<b class="nc">&nbsp;        movie.setStock(Integer.parseInt(NUMBER_FORMAT.format(this.sliStock.getValue())));</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private void reset() {
+<b class="nc">&nbsp;        this.tblMovies.getSelectionModel().clearSelection();</b>
+<b class="nc">&nbsp;        this.showMovieDetails(null);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private void loadFromService() {
+<b class="nc">&nbsp;        Movie movie = new Movie();</b>
+<b class="nc">&nbsp;        this.fillMovieWithFieldData(movie);</b>
+&nbsp;        try {
+<b class="nc">&nbsp;            String rating = this.ratingService.loadRatingForMovie(movie).toString();</b>
+<b class="nc">&nbsp;            System.out.println(rating);</b>
+<b class="nc">&nbsp;            this.txtRating.setText(rating);</b>
+<b class="nc">&nbsp;        } catch (TooManyMoviesFound tooManyMoviesFound) {</b>
+<b class="nc">&nbsp;            Alert alert = new Alert(Alert.AlertType.ERROR);</b>
+<b class="nc">&nbsp;            alert.setTitle(&quot;Filmverleih | Bewertungsservice Fehler&quot;);</b>
+<b class="nc">&nbsp;            alert.setHeaderText(&quot;Es wurden zu viele passende Filme gefunden.&quot;);</b>
+<b class="nc">&nbsp;            alert.setContentText(&quot;Versuchen Sie die Suchanfrage zu konkretisieren.&quot;);</b>
+<b class="nc">&nbsp;            alert.showAndWait();</b>
+<b class="nc">&nbsp;        } catch (NoMovieFoundException e) {</b>
+<b class="nc">&nbsp;            Alert alert = new Alert(Alert.AlertType.ERROR);</b>
+<b class="nc">&nbsp;            alert.setTitle(&quot;Filmverleih | Bewertungsservice Fehler&quot;);</b>
+<b class="nc">&nbsp;            alert.setHeaderText(&quot;Es wurden keine passende Filme gefunden.&quot;);</b>
+<b class="nc">&nbsp;            alert.setContentText(&quot;Versuchen Sie die Suchanfrage zu konkretisieren.&quot;);</b>
+<b class="nc">&nbsp;            alert.showAndWait();</b>
+<b class="nc">&nbsp;        } catch (ServiceNotAvailableException e) {</b>
+<b class="nc">&nbsp;            Alert alert = new Alert(Alert.AlertType.ERROR);</b>
+<b class="nc">&nbsp;            alert.setTitle(&quot;Filmverleih | Bewertungsservice Fehler&quot;);</b>
+<b class="nc">&nbsp;            alert.setHeaderText(&quot;Ein unerwarteter Fehler ist aufgetreten.&quot;);</b>
+<b class="nc">&nbsp;            alert.setContentText(e.getMessage());</b>
+<b class="nc">&nbsp;            alert.showAndWait();</b>
+<b class="nc">&nbsp;        }</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setMovieDAO(MovieDAO movieDAO) {
+<b class="nc">&nbsp;        this.movieDAO = movieDAO;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setRatingService(RatingService ratingService) {
+<b class="nc">&nbsp;        this.ratingService = ratingService;</b>
+&nbsp;    }
+&nbsp;}
+&nbsp;
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-11-15 11:14</div>
+</div>
+</body>
+</html>

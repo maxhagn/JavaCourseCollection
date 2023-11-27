@@ -1,0 +1,318 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > Movie</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">at.ac.tuwien.qs.movierental</a>
+</div>
+
+<h1>Coverage Summary for Class: Movie (at.ac.tuwien.qs.movierental)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Movie</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    51,2%
+  </span>
+  <span class="absValue">
+    (22/43)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    59,3%
+  </span>
+  <span class="absValue">
+    (35/59)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package at.ac.tuwien.qs.movierental;
+&nbsp;
+&nbsp;import javafx.beans.property.ObjectProperty;
+&nbsp;import javafx.beans.property.SimpleObjectProperty;
+&nbsp;
+&nbsp;import java.io.File;
+&nbsp;import java.time.Year;
+&nbsp;
+<b class="fc">&nbsp;public class Movie {</b>
+&nbsp;
+<b class="fc">&nbsp;    private ObjectProperty&lt;Long&gt; id = new SimpleObjectProperty&lt;&gt;(null);</b>
+<b class="fc">&nbsp;    private ObjectProperty&lt;String&gt; title = new SimpleObjectProperty&lt;&gt;(null);</b>
+<b class="fc">&nbsp;    private ObjectProperty&lt;String&gt; subtitle = new SimpleObjectProperty&lt;&gt;(null);</b>
+<b class="fc">&nbsp;    private ObjectProperty&lt;String&gt; genre = new SimpleObjectProperty&lt;&gt;(null);</b>
+<b class="fc">&nbsp;    private ObjectProperty&lt;String&gt; ageRating = new SimpleObjectProperty&lt;&gt;(null);</b>
+<b class="fc">&nbsp;    private ObjectProperty&lt;String&gt; language = new SimpleObjectProperty&lt;&gt;(null);</b>
+<b class="fc">&nbsp;    private ObjectProperty&lt;Integer&gt; priceInCents = new SimpleObjectProperty&lt;&gt;(null);</b>
+<b class="fc">&nbsp;    private ObjectProperty&lt;String&gt; director = new SimpleObjectProperty&lt;&gt;(null);</b>
+<b class="fc">&nbsp;    private ObjectProperty&lt;Float&gt; rating = new SimpleObjectProperty&lt;&gt;(null);</b>
+<b class="fc">&nbsp;    private ObjectProperty&lt;Year&gt; yearPublished = new SimpleObjectProperty&lt;&gt;(null);</b>
+<b class="fc">&nbsp;    private ObjectProperty&lt;Boolean&gt; series = new SimpleObjectProperty&lt;&gt;(false);</b>
+<b class="fc">&nbsp;    private ObjectProperty&lt;Integer&gt; stock = new SimpleObjectProperty&lt;&gt;(0);</b>
+<b class="fc">&nbsp;    private ObjectProperty&lt;File&gt; cover = new SimpleObjectProperty&lt;&gt;(null);</b>
+&nbsp;
+&nbsp;    public Long getId() {
+<b class="fc">&nbsp;        return id.get();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public ObjectProperty&lt;Long&gt; idProperty() {
+<b class="nc">&nbsp;        return id;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setId(Long id) {
+<b class="fc">&nbsp;        this.id.set(id);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String getTitle() {
+<b class="fc">&nbsp;        return title.get();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public ObjectProperty&lt;String&gt; titleProperty() {
+<b class="nc">&nbsp;        return title;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setTitle(String title) {
+<b class="fc">&nbsp;        this.title.set(title);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String getSubtitle() {
+<b class="fc">&nbsp;        return subtitle.get();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public ObjectProperty&lt;String&gt; subtitleProperty() {
+<b class="nc">&nbsp;        return subtitle;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setSubtitle(String subtitle) {
+<b class="fc">&nbsp;        this.subtitle.set(subtitle);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String getGenre() {
+<b class="fc">&nbsp;        return genre.get();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public ObjectProperty&lt;String&gt; genreProperty() {
+<b class="nc">&nbsp;        return genre;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setGenre(String genre) {
+<b class="fc">&nbsp;        this.genre.set(genre);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String getAgeRating() {
+<b class="fc">&nbsp;        return ageRating.get();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public ObjectProperty&lt;String&gt; ageRatingProperty() {
+<b class="nc">&nbsp;        return ageRating;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setAgeRating(String ageRating) {
+<b class="fc">&nbsp;        this.ageRating.set(ageRating);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String getLanguage() {
+<b class="nc">&nbsp;        return language.get();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public ObjectProperty&lt;String&gt; languageProperty() {
+<b class="nc">&nbsp;        return language;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setLanguage(String language) {
+<b class="fc">&nbsp;        this.language.set(language);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Integer getPriceInCents() {
+<b class="fc">&nbsp;        return priceInCents.get();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public ObjectProperty&lt;Integer&gt; priceInCentsProperty() {
+<b class="nc">&nbsp;        return priceInCents;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setPriceInCents(Integer priceInCents) {
+<b class="fc">&nbsp;        this.priceInCents.set(priceInCents);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public String getDirector() {
+<b class="nc">&nbsp;        return director.get();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public ObjectProperty&lt;String&gt; directorProperty() {
+<b class="nc">&nbsp;        return director;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setDirector(String director) {
+<b class="fc">&nbsp;        this.director.set(director);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Float getRating() {
+<b class="fc">&nbsp;        return rating.get();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public ObjectProperty&lt;Float&gt; ratingProperty() {
+<b class="nc">&nbsp;        return rating;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setRating(Float rating) {
+<b class="fc">&nbsp;        this.rating.set(rating);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Year getYearPublished() {
+<b class="fc">&nbsp;        return yearPublished.get();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public ObjectProperty&lt;Year&gt; yearPublishedProperty() {
+<b class="nc">&nbsp;        return yearPublished;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setYearPublished(Year yearPublished) {
+<b class="fc">&nbsp;        this.yearPublished.set(yearPublished);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Boolean getSeries() {
+<b class="nc">&nbsp;        return series.get();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public ObjectProperty&lt;Boolean&gt; seriesProperty() {
+<b class="nc">&nbsp;        return series;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setSeries(Boolean series) {
+<b class="fc">&nbsp;        this.series.set(series);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public Integer getStock() {
+<b class="nc">&nbsp;        return stock.get();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public ObjectProperty&lt;Integer&gt; stockProperty() {
+<b class="nc">&nbsp;        return stock;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setStock(Integer stock) {
+<b class="fc">&nbsp;        this.stock.set(stock);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public File getCover() {
+<b class="nc">&nbsp;        return cover.get();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public ObjectProperty&lt;File&gt; coverProperty() {
+<b class="nc">&nbsp;        return cover;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setCover(File cover) {
+<b class="fc">&nbsp;        this.cover.set(cover);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public boolean equals(Object o) {
+<b class="nc">&nbsp;        if (this == o) return true;</b>
+<b class="nc">&nbsp;        if (o == null || getClass() != o.getClass()) return false;</b>
+&nbsp;
+<b class="nc">&nbsp;        Movie movie = (Movie) o;</b>
+&nbsp;
+<b class="nc">&nbsp;        return !(id != null ? !id.equals(movie.id) : movie.id != null);</b>
+&nbsp;
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public int hashCode() {
+<b class="nc">&nbsp;        return id != null ? id.hashCode() : 0;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public String toString() {
+<b class="nc">&nbsp;        return &quot;Movie{&quot; +</b>
+&nbsp;                &quot;id=&quot; + id +
+&nbsp;                &quot;, title=&quot; + title +
+&nbsp;                &quot;, subtitle=&quot; + subtitle +
+&nbsp;                &quot;, genre=&quot; + genre +
+&nbsp;                &quot;, ageRating=&quot; + ageRating +
+&nbsp;                &quot;, language=&quot; + language +
+&nbsp;                &quot;, priceInCents=&quot; + priceInCents +
+&nbsp;                &quot;, director=&quot; + director +
+&nbsp;                &quot;, rating=&quot; + rating +
+&nbsp;                &quot;, yearPublished=&quot; + yearPublished +
+&nbsp;                &quot;, series=&quot; + series +
+&nbsp;                &quot;, stock=&quot; + stock +
+&nbsp;                &quot;, cover=&quot; + cover +
+&nbsp;                &#39;}&#39;;
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-11-15 11:14</div>
+</div>
+</body>
+</html>

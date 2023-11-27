@@ -1,0 +1,240 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > DummyCustomerDAO</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">at.ac.tuwien.qs.movierental</a>
+</div>
+
+<h1>Coverage Summary for Class: DummyCustomerDAO (at.ac.tuwien.qs.movierental)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">DummyCustomerDAO</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/7)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/88)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package at.ac.tuwien.qs.movierental;
+&nbsp;
+&nbsp;import java.time.LocalDate;
+&nbsp;import java.time.format.DateTimeFormatter;
+&nbsp;import java.util.ArrayList;
+&nbsp;import java.util.HashSet;
+&nbsp;import java.util.List;
+&nbsp;import java.util.concurrent.atomic.AtomicLong;
+&nbsp;
+&nbsp;public class DummyCustomerDAO implements CustomerDAO {
+&nbsp;
+<b class="nc">&nbsp;    private AtomicLong atomicLong = new AtomicLong(0);</b>
+&nbsp;
+<b class="nc">&nbsp;    public DummyCustomerDAO() {</b>
+&nbsp;        Customer customer;
+&nbsp;        {
+<b class="nc">&nbsp;            customer = new Customer();</b>
+<b class="nc">&nbsp;            customer.setId(atomicLong.addAndGet(1));</b>
+<b class="nc">&nbsp;            customer.setFirstName(&quot;Johann&quot;);</b>
+<b class="nc">&nbsp;            customer.setLastName(&quot;Fischer&quot;);</b>
+<b class="nc">&nbsp;            customer.setEmail(&quot;angler@gmail.com&quot;);</b>
+<b class="nc">&nbsp;            customer.setPhone(&quot;+43 674 156 45 78&quot;);</b>
+<b class="nc">&nbsp;            customer.setBirthday(LocalDate.parse(&quot;23. 05. 1960&quot;, DATE_TIME_FORMATTER));</b>
+<b class="nc">&nbsp;            customer.setAddress(&quot;Neustiftgasse 31&quot;);</b>
+<b class="nc">&nbsp;            customer.setZipCode(&quot;1070&quot;);</b>
+<b class="nc">&nbsp;            customer.setCity(&quot;Wien&quot;);</b>
+<b class="nc">&nbsp;            customer.setPatron(true);</b>
+<b class="nc">&nbsp;            customer.setPhoto(null);</b>
+<b class="nc">&nbsp;            customer.setVideopoints(12);</b>
+<b class="nc">&nbsp;            customers.add(customer);</b>
+&nbsp;        }
+&nbsp;        {
+<b class="nc">&nbsp;            customer = new Customer();</b>
+<b class="nc">&nbsp;            customer.setId(atomicLong.addAndGet(1));</b>
+<b class="nc">&nbsp;            customer.setFirstName(&quot;Linda&quot;);</b>
+<b class="nc">&nbsp;            customer.setLastName(&quot;Mayer&quot;);</b>
+<b class="nc">&nbsp;            customer.setEmail(&quot;Lucy2001@hotmail.com&quot;);</b>
+<b class="nc">&nbsp;            customer.setPhone(&quot;+43 555 61 61&quot;);</b>
+<b class="nc">&nbsp;            customer.setBirthday(LocalDate.parse(&quot;01. 04. 2010&quot;, DATE_TIME_FORMATTER));</b>
+<b class="nc">&nbsp;            customer.setAddress(&quot;Berggasse 11&quot;);</b>
+<b class="nc">&nbsp;            customer.setZipCode(&quot;3002&quot;);</b>
+<b class="nc">&nbsp;            customer.setCity(&quot;Purkersdorf&quot;);</b>
+<b class="nc">&nbsp;            customer.setPatron(true);</b>
+<b class="nc">&nbsp;            customer.setPhoto(null);</b>
+<b class="nc">&nbsp;            customer.setVideopoints(2);</b>
+<b class="nc">&nbsp;            customers.add(customer);</b>
+&nbsp;        }
+&nbsp;        {
+<b class="nc">&nbsp;            customer = new Customer();</b>
+<b class="nc">&nbsp;            customer.setId(atomicLong.addAndGet(1));</b>
+<b class="nc">&nbsp;            customer.setFirstName(&quot;Paul&quot;);</b>
+<b class="nc">&nbsp;            customer.setLastName(&quot;Wagner&quot;);</b>
+<b class="nc">&nbsp;            customer.setEmail(&quot;paul.wagner@spambot.com&quot;);</b>
+<b class="nc">&nbsp;            customer.setPhone(&quot;+43 222 12 12&quot;);</b>
+<b class="nc">&nbsp;            customer.setBirthday(LocalDate.parse(&quot;21. 04. 2004&quot;, DATE_TIME_FORMATTER));</b>
+<b class="nc">&nbsp;            customer.setAddress(&quot;Währinger Straße 102&quot;);</b>
+<b class="nc">&nbsp;            customer.setZipCode(&quot;1118&quot;);</b>
+<b class="nc">&nbsp;            customer.setCity(&quot;Wien&quot;);</b>
+<b class="nc">&nbsp;            customer.setPatron(false);</b>
+<b class="nc">&nbsp;            customer.setPhoto(null);</b>
+<b class="nc">&nbsp;            customer.setVideopoints(50);</b>
+<b class="nc">&nbsp;            customers.add(customer);</b>
+&nbsp;        }
+&nbsp;        {
+<b class="nc">&nbsp;            customer = new Customer();</b>
+<b class="nc">&nbsp;            customer.setId(atomicLong.addAndGet(1));</b>
+<b class="nc">&nbsp;            customer.setFirstName(&quot;Sabine&quot;);</b>
+<b class="nc">&nbsp;            customer.setLastName(&quot;Wild&quot;);</b>
+<b class="nc">&nbsp;            customer.setEmail(&quot;swild@gmx.at&quot;);</b>
+<b class="nc">&nbsp;            customer.setPhone(null);</b>
+<b class="nc">&nbsp;            customer.setBirthday(LocalDate.parse(&quot;12. 12. 1999&quot;, DATE_TIME_FORMATTER));</b>
+<b class="nc">&nbsp;            customer.setAddress(&quot;Kleine Pfarrgasse 26&quot;);</b>
+<b class="nc">&nbsp;            customer.setZipCode(&quot;1020&quot;);</b>
+<b class="nc">&nbsp;            customer.setCity(&quot;Wien&quot;);</b>
+<b class="nc">&nbsp;            customer.setPatron(true);</b>
+<b class="nc">&nbsp;            customer.setPhoto(null);</b>
+<b class="nc">&nbsp;            customer.setVideopoints(42);</b>
+<b class="nc">&nbsp;            customers.add(customer);</b>
+&nbsp;        }
+&nbsp;        {
+<b class="nc">&nbsp;            customer = new Customer();</b>
+<b class="nc">&nbsp;            customer.setId(atomicLong.addAndGet(1));</b>
+<b class="nc">&nbsp;            customer.setFirstName(&quot;Veronika&quot;);</b>
+<b class="nc">&nbsp;            customer.setLastName(&quot;Raab&quot;);</b>
+<b class="nc">&nbsp;            customer.setEmail(&quot;veronika@raab.at&quot;);</b>
+<b class="nc">&nbsp;            customer.setPhone(&quot;+43 664 500 800&quot;);</b>
+<b class="nc">&nbsp;            customer.setBirthday(LocalDate.parse(&quot;30. 11. 1986&quot;, DATE_TIME_FORMATTER));</b>
+<b class="nc">&nbsp;            customer.setAddress(&quot;Wallnerstraße 1-1A&quot;);</b>
+<b class="nc">&nbsp;            customer.setZipCode(&quot;1010&quot;);</b>
+<b class="nc">&nbsp;            customer.setCity(&quot;Wien&quot;);</b>
+<b class="nc">&nbsp;            customer.setPatron(false);</b>
+<b class="nc">&nbsp;            customer.setPhoto(null);</b>
+<b class="nc">&nbsp;            customer.setVideopoints(21);</b>
+<b class="nc">&nbsp;            customers.add(customer);</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+<b class="nc">&nbsp;    private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern(&quot;dd. MM. yyyy&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;    private HashSet&lt;Customer&gt; customers = new HashSet&lt;&gt;();</b>
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public Customer create(Customer customer) {
+<b class="nc">&nbsp;        customer.setId(atomicLong.addAndGet(1));</b>
+<b class="nc">&nbsp;        customers.add(customer);</b>
+<b class="nc">&nbsp;        return customer;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public Customer read(Long id) {
+<b class="nc">&nbsp;        for(Customer customer : customers) {</b>
+<b class="nc">&nbsp;            if(customer.getId() == id) {</b>
+<b class="nc">&nbsp;                return customer;</b>
+&nbsp;            }
+<b class="nc">&nbsp;        }</b>
+<b class="nc">&nbsp;        return null;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public List&lt;Customer&gt; read() {
+<b class="nc">&nbsp;        ArrayList&lt;Customer&gt; c = new ArrayList&lt;&gt;(this.customers);</b>
+<b class="nc">&nbsp;        c.sort((o1, o2) -&gt; o1.getId().compareTo(o2.getId()));</b>
+<b class="nc">&nbsp;        return c;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public Customer update(Customer customer) {
+<b class="nc">&nbsp;        this.customers.add(customer);</b>
+<b class="nc">&nbsp;        return customer;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public void delete(Customer customer) {
+<b class="nc">&nbsp;        this.customers.remove(customer);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-11-15 11:14</div>
+</div>
+</body>
+</html>

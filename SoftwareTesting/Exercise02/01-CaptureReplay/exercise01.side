@@ -1,0 +1,592 @@
+{
+  "id": "5997c5e0-a33b-4c41-9abb-d6ca22d779e8",
+  "version": "2.0",
+  "name": "exercise01",
+  "url": "http://192.168.18.89",
+  "tests": [{
+    "id": "d79013c1-cce3-482b-9c6b-11d71f2e1992",
+    "name": "CreateBugTest",
+    "commands": [{
+      "id": "5c16ed9e-94f1-4db2-bb62-727424d07e3c",
+      "comment": "Open the application.",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "cc66bc70-bc03-4b39-8959-93491d43007a",
+      "comment": "Navigate to the new section.",
+      "command": "click",
+      "target": "linkText=New",
+      "targets": [
+        ["linkText=New", "linkText"],
+        ["css=#common_links li:nth-child(2) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'New')]", "xpath:link"],
+        ["xpath=//div[@id='common_links']/ul/li[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'enter_bug.cgi')]", "xpath:href"],
+        ["xpath=//li[2]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'New')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "00eba697-da56-43b3-a11a-8d07d07f3cda",
+      "comment": "Click on the short description section.",
+      "command": "click",
+      "target": "id=short_desc",
+      "targets": [
+        ["id=short_desc", "id"],
+        ["name=short_desc", "name"],
+        ["css=#short_desc", "css:finder"],
+        ["xpath=//input[@id='short_desc']", "xpath:attributes"],
+        ["xpath=//form[@id='Create']/table/tbody[5]/tr/td/input", "xpath:idRelative"],
+        ["xpath=//tbody[5]/tr/td/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "30a9f1f7-8956-4469-94c0-abb467810d4d",
+      "comment": "Enter the short description.",
+      "command": "type",
+      "target": "id=short_desc",
+      "targets": [
+        ["id=short_desc", "id"],
+        ["name=short_desc", "name"],
+        ["css=#short_desc", "css:finder"],
+        ["xpath=//input[@id='short_desc']", "xpath:attributes"],
+        ["xpath=//form[@id='Create']/table/tbody[5]/tr/td/input", "xpath:idRelative"],
+        ["xpath=//tbody[5]/tr/td/input", "xpath:position"]
+      ],
+      "value": "This is the first Test"
+    }, {
+      "id": "937415af-75d0-40da-bc1d-81f1314b0c1c",
+      "comment": "Verify that the short description was set as value.",
+      "command": "verifyValue",
+      "target": "id=short_desc",
+      "targets": [
+        ["id=short_desc", "id"],
+        ["name=short_desc", "name"],
+        ["css=#short_desc", "css:finder"],
+        ["xpath=//input[@id='short_desc']", "xpath:attributes"],
+        ["xpath=//form[@id='Create']/table/tbody[5]/tr/td/input", "xpath:idRelative"],
+        ["xpath=//tbody[5]/tr/td/input", "xpath:position"]
+      ],
+      "value": "This is the first Test"
+    }, {
+      "id": "e08a06a1-591c-4d60-8b6d-b96e881303ba",
+      "comment": "Click on the comment section.",
+      "command": "click",
+      "target": "id=comment",
+      "targets": [
+        ["id=commit", "id"],
+        ["css=#commit", "css:finder"],
+        ["xpath=//input[@id='commit']", "xpath:attributes"],
+        ["xpath=//form[@id='Create']/table/tbody[8]/tr/td/input", "xpath:idRelative"],
+        ["xpath=//tbody[8]/tr/td/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "143ca77f-2b5e-47c9-a73b-988848f0441a",
+      "comment": "Enter the comment.",
+      "command": "type",
+      "target": "id=comment",
+      "targets": [
+        ["id=comment", "id"],
+        ["name=comment", "name"],
+        ["css=#comment", "css:finder"],
+        ["xpath=//textarea[@id='comment']", "xpath:attributes"],
+        ["xpath=//form[@id='Create']/table/tbody[5]/tr[3]/td/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": "This is the first test that i recorded with selenium."
+    }, {
+      "id": "b72a5c91-bd08-4b5f-aaca-07deee13e960",
+      "comment": "Verify that the comment was set as value.",
+      "command": "verifyValue",
+      "target": "id=comment",
+      "targets": [
+        ["id=comment", "id"],
+        ["name=comment", "name"],
+        ["css=#comment", "css:finder"],
+        ["xpath=//textarea[@id='comment']", "xpath:attributes"],
+        ["xpath=//form[@id='Create']/table/tbody[5]/tr[3]/td/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": "This is the first test that i recorded with selenium."
+    }, {
+      "id": "0ea6c047-22f4-43bd-87c0-89b7c0650ee3",
+      "comment": "Create the bug.",
+      "command": "click",
+      "target": "id=commit",
+      "targets": [
+        ["id=commit", "id"],
+        ["css=#commit", "css:finder"],
+        ["xpath=//input[@id='commit']", "xpath:attributes"],
+        ["xpath=//form[@id='Create']/table/tbody[8]/tr/td/input", "xpath:idRelative"],
+        ["xpath=//tbody[8]/tr/td/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "4ea2c4b1-19a3-4bcb-aec4-d63a5912b929",
+      "comment": "Verify that the element with id bugzilla-body contains the string \"successfully created\".",
+      "command": "verifyElementPresent",
+      "target": "xpath=//div[@id='bugzilla-body']/dl/dt[contains(.,'successfully created')]",
+      "targets": [
+        ["css=#bugzilla-body > dl > dt", "css:finder"],
+        ["xpath=//div[@id='bugzilla-body']/dl/dt", "xpath:idRelative"],
+        ["xpath=//dt", "xpath:position"],
+        ["xpath=//dt[contains(.,'Bug 1 has been successfully created')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "fc4e7a40-0089-409a-aec2-6a14cbd4cc5e",
+    "name": "SearchTest",
+    "commands": [{
+      "id": "396ae5aa-5f58-4818-9687-1fb5b78f703f",
+      "comment": "Open the application.",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f0ce7e4a-c7f3-4b68-94f0-327005527ba2",
+      "comment": " Navigate to the search section.",
+      "command": "click",
+      "target": "linkText=Search",
+      "targets": [
+        ["linkText=Search", "linkText"],
+        ["css=#common_links li:nth-child(4) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Search')]", "xpath:link"],
+        ["xpath=//div[@id='common_links']/ul/li[4]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'query.cgi')]", "xpath:href"],
+        ["xpath=//li[4]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Search')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "fc6006be-2df9-4552-ac10-0b2cbc53b103",
+      "comment": "Select the bug status closed.",
+      "command": "select",
+      "target": "id=bug_status",
+      "targets": [],
+      "value": "label=Closed"
+    }, {
+      "id": "5f40631c-4ccf-4a76-9bf5-49d80830a5de",
+      "comment": "Select the bug status closed.",
+      "command": "mouseDownAt",
+      "target": "id=bug_status",
+      "targets": [
+        ["id=bug_status", "id"],
+        ["name=bug_status", "name"],
+        ["css=#bug_status", "css:finder"],
+        ["xpath=//select[@id='bug_status']", "xpath:attributes"],
+        ["xpath=//div[@id='bugzilla-body']/div/div/form/table/tbody/tr/td/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "-0.78125,-0.3125"
+    }, {
+      "id": "6d06e8c3-977f-4b1f-a00e-175c4ad39c29",
+      "comment": "Select the bug status closed.",
+      "command": "mouseMoveAt",
+      "target": "id=bug_status",
+      "targets": [
+        ["id=bug_status", "id"],
+        ["name=bug_status", "name"],
+        ["css=#bug_status", "css:finder"],
+        ["xpath=//select[@id='bug_status']", "xpath:attributes"],
+        ["xpath=//div[@id='bugzilla-body']/div/div/form/table/tbody/tr/td/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "-0.78125,-0.3125"
+    }, {
+      "id": "9e94c9b9-6833-4f09-aa19-575e8d3533cc",
+      "comment": "Select the bug status closed.",
+      "command": "mouseUpAt",
+      "target": "id=bug_status",
+      "targets": [
+        ["id=bug_status", "id"],
+        ["name=bug_status", "name"],
+        ["css=#bug_status", "css:finder"],
+        ["xpath=//select[@id='bug_status']", "xpath:attributes"],
+        ["xpath=//div[@id='bugzilla-body']/div/div/form/table/tbody/tr/td/select", "xpath:idRelative"],
+        ["xpath=//select", "xpath:position"]
+      ],
+      "value": "-0.78125,-0.3125"
+    }, {
+      "id": "9b4486e3-3194-44ba-8805-651886036077",
+      "comment": "Verify that the value of the bug status was set to \"__closed__\".",
+      "command": "verifySelectedValue",
+      "target": "id=bug_status",
+      "targets": [],
+      "value": "__closed__"
+    }, {
+      "id": "1154944c-f52b-4119-a33b-f271f995b69a",
+      "comment": "Select the product TestProduct closed.",
+      "command": "select",
+      "target": "id=product",
+      "targets": [],
+      "value": "label=TestProduct"
+    }, {
+      "id": "8f2b931e-4d5d-4271-8c40-376106157f02",
+      "comment": "Select the product TestProduct closed.",
+      "command": "mouseDownAt",
+      "target": "id=product",
+      "targets": [
+        ["id=product", "id"],
+        ["name=product", "name"],
+        ["css=#product", "css:finder"],
+        ["xpath=//select[@id='product']", "xpath:attributes"],
+        ["xpath=//div[@id='bugzilla-body']/div/div/form/table/tbody/tr[2]/td/select", "xpath:idRelative"],
+        ["xpath=//tr[2]/td/select", "xpath:position"]
+      ],
+      "value": "-0.78125,-0.3125"
+    }, {
+      "id": "2034d7f7-c2d9-4b3d-ad4c-c6f2491018f5",
+      "comment": "Select the product TestProduct closed.",
+      "command": "mouseMoveAt",
+      "target": "id=product",
+      "targets": [
+        ["id=product", "id"],
+        ["name=product", "name"],
+        ["css=#product", "css:finder"],
+        ["xpath=//select[@id='product']", "xpath:attributes"],
+        ["xpath=//div[@id='bugzilla-body']/div/div/form/table/tbody/tr[2]/td/select", "xpath:idRelative"],
+        ["xpath=//tr[2]/td/select", "xpath:position"]
+      ],
+      "value": "-0.78125,-0.3125"
+    }, {
+      "id": "d64c66a6-0461-4176-9c94-6c737278919e",
+      "comment": "Select the product TestProduct closed.",
+      "command": "mouseUpAt",
+      "target": "id=product",
+      "targets": [
+        ["id=product", "id"],
+        ["name=product", "name"],
+        ["css=#product", "css:finder"],
+        ["xpath=//select[@id='product']", "xpath:attributes"],
+        ["xpath=//div[@id='bugzilla-body']/div/div/form/table/tbody/tr[2]/td/select", "xpath:idRelative"],
+        ["xpath=//tr[2]/td/select", "xpath:position"]
+      ],
+      "value": "-0.78125,-0.3125"
+    }, {
+      "id": "9f51a6a9-1c6b-4d23-86ae-e11de6a37194",
+      "comment": "Verify that the value of the product was set to \"TestProduct\".",
+      "command": "verifySelectedValue",
+      "target": "id=product",
+      "targets": [],
+      "value": "TestProduct"
+    }, {
+      "id": "1f9bfaf9-7071-4c2d-bcef-5e102a622c30",
+      "comment": "Click on the search words.",
+      "command": "click",
+      "target": "id=content",
+      "targets": [
+        ["id=content", "id"],
+        ["name=content", "name"],
+        ["css=#content", "css:finder"],
+        ["xpath=//input[@id='content']", "xpath:attributes"],
+        ["xpath=//div[@id='bugzilla-body']/div/div/form/table/tbody/tr[3]/td/input", "xpath:idRelative"],
+        ["xpath=//td/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "9c5c17bc-ac70-4496-a270-6f014cb20183",
+      "comment": "Type the search words.",
+      "command": "type",
+      "target": "id=content",
+      "targets": [
+        ["id=content", "id"],
+        ["name=content", "name"],
+        ["css=#content", "css:finder"],
+        ["xpath=//input[@id='content']", "xpath:attributes"],
+        ["xpath=//div[@id='bugzilla-body']/div/div/form/table/tbody/tr[3]/td/input", "xpath:idRelative"],
+        ["xpath=//td/input", "xpath:position"]
+      ],
+      "value": "This is one of three closed tests"
+    }, {
+      "id": "caeca6d4-d711-4d65-b2c2-ecce6542522e",
+      "comment": "Verify that the content was set to the search string.",
+      "command": "verifyValue",
+      "target": "id=content",
+      "targets": [],
+      "value": "This is one of three closed tests"
+    }, {
+      "id": "480cd00e-489d-46ac-9e42-11715f3d6882",
+      "comment": "Click on search.",
+      "command": "click",
+      "target": "id=search",
+      "targets": [
+        ["id=search", "id"],
+        ["css=#search", "css:finder"],
+        ["xpath=//input[@id='search']", "xpath:attributes"],
+        ["xpath=//div[@id='bugzilla-body']/div/div/form/table/tbody/tr[4]/td[2]/input", "xpath:idRelative"],
+        ["xpath=//td[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f863e38b-0cc0-427b-8385-77d1c485d550",
+      "comment": "Verify that the string \"3 bugs found\" is contained on this page.",
+      "command": "verifyElementPresent",
+      "target": "xpath=//span[contains(.,'3 bugs found.')]",
+      "targets": [
+        ["css=.bz_result_count", "css:finder"],
+        ["xpath=//div[@id='bugzilla-body']/span", "xpath:idRelative"],
+        ["xpath=//body/div[2]/span", "xpath:position"],
+        ["xpath=//span[contains(.,'3 bugs found.')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }, {
+    "id": "a39a1752-56b5-4dfb-babf-04f047308e8d",
+    "name": "ChangeStatusTest",
+    "commands": [{
+      "id": "eb0e198c-1161-4fb3-ab9c-c13e037337fd",
+      "comment": "Open the application.",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "fbbb8e0b-5a0e-45ec-a5d7-1b1108ebfef9",
+      "comment": "Open the browse section.",
+      "command": "click",
+      "target": "linkText=Browse",
+      "targets": [
+        ["linkText=Browse", "linkText"],
+        ["css=#common_links li:nth-child(3) > a", "css:finder"],
+        ["xpath=//a[contains(text(),'Browse')]", "xpath:link"],
+        ["xpath=//div[@id='common_links']/ul/li[3]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'describecomponents.cgi')]", "xpath:href"],
+        ["xpath=//li[3]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Browse')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "c2afe700-6eaa-4a34-9710-620a66ee22c9",
+      "comment": "Click on the TestComponent section.",
+      "command": "click",
+      "target": "linkText=TestComponent",
+      "targets": [
+        ["linkText=TestComponent", "linkText"],
+        ["css=.component_name > a", "css:finder"],
+        ["xpath=//a[contains(text(),'TestComponent')]", "xpath:link"],
+        ["xpath=//tr[@id='TestComponent']/td/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'buglist.cgi?product=TestProduct&component=TestComponent&resolution=---')]", "xpath:href"],
+        ["xpath=//td/a", "xpath:position"],
+        ["xpath=//a[contains(.,'TestComponent')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "265454d5-ab89-4e16-b7ed-0f753145dcb5",
+      "comment": "Open the first entry in the list.",
+      "command": "click",
+      "target": "linkText=1",
+      "targets": [
+        ["linkText=1", "linkText"],
+        ["css=#b1 > .first-child > a", "css:finder"],
+        ["xpath=//a[contains(text(),'1')]", "xpath:link"],
+        ["xpath=//tr[@id='b1']/td/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'show_bug.cgi?id=1')]", "xpath:href"],
+        ["xpath=//td/a", "xpath:position"],
+        ["xpath=//a[contains(.,'1')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "b9357d08-a128-45c4-adc7-959f105135d7",
+      "comment": "Clone the first entry.",
+      "command": "click",
+      "target": "linkText=Clone This Bug",
+      "targets": [
+        ["linkText=Clone This Bug", "linkText"],
+        ["css=li:nth-child(3) > a:nth-child(1)", "css:finder"],
+        ["xpath=//a[contains(text(),'Clone This Bug')]", "xpath:link"],
+        ["xpath=//div[@id='bugzilla-body']/ul/li[3]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'enter_bug.cgi?cloned_bug_id=1')]", "xpath:href"],
+        ["xpath=//div[2]/ul/li[3]/a", "xpath:position"],
+        ["xpath=//a[contains(.,'Clone This Bug')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "95773f06-7758-49e2-a95f-b7e0b0e8ff84",
+      "comment": "Save the cloned entry.",
+      "command": "click",
+      "target": "id=commit",
+      "targets": [
+        ["id=commit", "id"],
+        ["css=#commit", "css:finder"],
+        ["xpath=//input[@id='commit']", "xpath:attributes"],
+        ["xpath=//form[@id='Create']/table/tbody[8]/tr/td/input", "xpath:idRelative"],
+        ["xpath=//tbody[8]/tr/td/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "7a8b411e-0bbf-4cfc-b171-97e3a84a3417",
+      "comment": "Click on the cloned entry.",
+      "command": "click",
+      "target": "css=a > b",
+      "targets": [
+        ["css=a > b", "css:finder"],
+        ["xpath=//form[@id='changeform']/div/a/b", "xpath:idRelative"],
+        ["xpath=//b", "xpath:position"],
+        ["xpath=//b[contains(.,'Bug 11')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "13e9bb6d-9dfb-46b1-b023-78bdfa4d0cbd",
+      "comment": "Click the comment window.",
+      "command": "click",
+      "target": "id=comment",
+      "targets": [
+        ["id=comment", "id"],
+        ["name=comment", "name"],
+        ["css=#comment", "css:finder"],
+        ["xpath=//textarea[@id='comment']", "xpath:attributes"],
+        ["xpath=//div[@id='add_comment']/table/tbody/tr/td/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "3ccf4ea7-5f1c-40d5-9912-6bf2e1b308e0",
+      "comment": "Type the comment.",
+      "command": "type",
+      "target": "id=comment",
+      "targets": [
+        ["id=comment", "id"],
+        ["name=comment", "name"],
+        ["css=#comment", "css:finder"],
+        ["xpath=//textarea[@id='comment']", "xpath:attributes"],
+        ["xpath=//div[@id='add_comment']/table/tbody/tr/td/textarea", "xpath:idRelative"],
+        ["xpath=//textarea", "xpath:position"]
+      ],
+      "value": "This bug was resolved!"
+    }, {
+      "id": "0d5654e3-3534-4f82-be97-70f85a6d9cd0",
+      "comment": "Set the bug status to fixed.",
+      "command": "select",
+      "target": "id=resolution",
+      "targets": [],
+      "value": "label=FIXED"
+    }, {
+      "id": "6c1ae25e-d888-4d72-a7f1-87b2bf7156c6",
+      "comment": "Set the bug status to resolved.",
+      "command": "select",
+      "target": "id=bug_status",
+      "targets": [],
+      "value": "label=RESOLVED"
+    }, {
+      "id": "9e1fee8f-cd40-4a35-a157-af0cdabf701b",
+      "comment": "Set the bug status to resolved.",
+      "command": "mouseDownAt",
+      "target": "id=bug_status",
+      "targets": [
+        ["id=bug_status", "id"],
+        ["name=bug_status", "name"],
+        ["css=#bug_status", "css:finder"],
+        ["xpath=//select[@id='bug_status']", "xpath:attributes"],
+        ["xpath=//div[@id='status']/select", "xpath:idRelative"],
+        ["xpath=//div/select", "xpath:position"]
+      ],
+      "value": "-0.078125,-0.953125"
+    }, {
+      "id": "1e98ec2d-0994-4f24-8695-e2baa2f5061b",
+      "comment": "Set the bug status to resolved.",
+      "command": "mouseMoveAt",
+      "target": "id=bug_status",
+      "targets": [
+        ["id=bug_status", "id"],
+        ["name=bug_status", "name"],
+        ["css=#bug_status", "css:finder"],
+        ["xpath=//select[@id='bug_status']", "xpath:attributes"],
+        ["xpath=//div[@id='status']/select", "xpath:idRelative"],
+        ["xpath=//div/select", "xpath:position"]
+      ],
+      "value": "-0.078125,-0.953125"
+    }, {
+      "id": "36027f10-4f4e-4d12-bf19-50e0255461ae",
+      "comment": "Set the bug status to resolved.",
+      "command": "mouseUpAt",
+      "target": "id=bug_status",
+      "targets": [
+        ["id=bug_status", "id"],
+        ["name=bug_status", "name"],
+        ["css=#bug_status", "css:finder"],
+        ["xpath=//select[@id='bug_status']", "xpath:attributes"],
+        ["xpath=//div[@id='status']/select", "xpath:idRelative"],
+        ["xpath=//div/select", "xpath:position"]
+      ],
+      "value": "-0.078125,-0.953125"
+    }, {
+      "id": "295c7b13-4506-46b2-9db8-3b24fcaf1fda",
+      "comment": "Verify that the value was set to resolved.",
+      "command": "verifySelectedValue",
+      "target": "id=bug_status",
+      "targets": [],
+      "value": "RESOLVED"
+    }, {
+      "id": "ff3f0fd2-2c26-4a2a-b84e-e7bb3585ead7",
+      "comment": "Save the changes to the bug.",
+      "command": "click",
+      "target": "id=commit",
+      "targets": [
+        ["id=commit", "id"],
+        ["css=#commit", "css:finder"],
+        ["xpath=//input[@id='commit']", "xpath:attributes"],
+        ["xpath=//div[@id='add_comment']/table/tbody/tr/td/div[3]/input", "xpath:idRelative"],
+        ["xpath=//div[3]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "76da57c1-d23c-4bf5-88e0-54c771604eea",
+      "comment": "Open the updated bug.",
+      "command": "click",
+      "target": "css=.bz_bug_link",
+      "targets": [
+        ["linkText=11", "linkText"],
+        ["css=.bz_bug_link", "css:finder"],
+        ["xpath=//a[contains(text(),'11')]", "xpath:link"],
+        ["xpath=//div[@id='bugzilla-body']/dl/dt/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'show_bug.cgi?id=11')]", "xpath:href"],
+        ["xpath=//dt/a", "xpath:position"],
+        ["xpath=//a[contains(.,'11')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }, {
+      "id": "0e316344-08b7-4bed-8687-82015937aa0b",
+      "comment": "Verify that the bug status was updated successfully.",
+      "command": "verifySelectedValue",
+      "target": "id=bug_status",
+      "targets": [],
+      "value": "RESOLVED"
+    }, {
+      "id": "33fc07d9-d779-4643-b352-f034ad564e9c",
+      "comment": "Verify that the resolution was updated successfully.",
+      "command": "verifySelectedValue",
+      "target": "id=resolution",
+      "targets": [],
+      "value": "FIXED"
+    }, {
+      "id": "88afda1b-5b0c-4198-be69-4fc4f2490803",
+      "comment": "Verify that the comment is present.",
+      "command": "verifyElementPresent",
+      "target": "xpath=//pre[contains(.,'This bug was resolved!')]",
+      "targets": [
+        ["id=comment_text_1", "id"],
+        ["css=#comment_text_1", "css:finder"],
+        ["xpath=//pre[@id='comment_text_1']", "xpath:attributes"],
+        ["xpath=//div[@id='c1']/pre", "xpath:idRelative"],
+        ["xpath=//div[2]/table/tbody/tr/td/div[2]/pre", "xpath:position"],
+        ["xpath=//pre[contains(.,'This bug was resolved!')]", "xpath:innerText"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "2f9a81cb-717e-4e37-bcdf-66e3b590e5a2",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["d79013c1-cce3-482b-9c6b-11d71f2e1992"]
+  }],
+  "urls": ["http://192.168.18.90/", "http://192.168.18.89/"],
+  "plugins": []
+}

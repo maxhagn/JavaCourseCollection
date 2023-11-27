@@ -1,0 +1,240 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > DummyMovieDAO</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">at.ac.tuwien.qs.movierental</a>
+</div>
+
+<h1>Coverage Summary for Class: DummyMovieDAO (at.ac.tuwien.qs.movierental)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">DummyMovieDAO</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/6)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/92)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package at.ac.tuwien.qs.movierental;
+&nbsp;
+&nbsp;import java.time.Year;
+&nbsp;import java.util.ArrayList;
+&nbsp;import java.util.HashSet;
+&nbsp;import java.util.List;
+&nbsp;import java.util.concurrent.atomic.AtomicLong;
+&nbsp;
+&nbsp;public class DummyMovieDAO implements MovieDAO {
+<b class="nc">&nbsp;    private AtomicLong atomicLong = new AtomicLong(0);</b>
+&nbsp;
+<b class="nc">&nbsp;    public DummyMovieDAO() {</b>
+&nbsp;        Movie movie;
+&nbsp;        {
+<b class="nc">&nbsp;            movie = new Movie();</b>
+<b class="nc">&nbsp;            movie.setId(atomicLong.addAndGet(1));</b>
+<b class="nc">&nbsp;            movie.setTitle(&quot;Der Herr der Ringe&quot;);</b>
+<b class="nc">&nbsp;            movie.setSubtitle(&quot;Die Gefährten&quot;);</b>
+<b class="nc">&nbsp;            movie.setGenre(&quot;Fantasy&quot;);</b>
+<b class="nc">&nbsp;            movie.setAgeRating(&quot;FSK 12&quot;);</b>
+<b class="nc">&nbsp;            movie.setLanguage(&quot;German&quot;);</b>
+<b class="nc">&nbsp;            movie.setPriceInCents(300);</b>
+<b class="nc">&nbsp;            movie.setDirector(&quot;Peter Jackson&quot;);</b>
+<b class="nc">&nbsp;            movie.setRating(4.9F);</b>
+<b class="nc">&nbsp;            movie.setYearPublished(Year.of(2001));</b>
+<b class="nc">&nbsp;            movie.setSeries(true);</b>
+<b class="nc">&nbsp;            movie.setStock(10);</b>
+<b class="nc">&nbsp;            movie.setCover(null);</b>
+<b class="nc">&nbsp;            movies.add(movie);</b>
+&nbsp;        }
+&nbsp;        {
+<b class="nc">&nbsp;            movie = new Movie();</b>
+<b class="nc">&nbsp;            movie.setId(atomicLong.addAndGet(1));</b>
+<b class="nc">&nbsp;            movie.setTitle(&quot;Der Herr der Ringe&quot;);</b>
+<b class="nc">&nbsp;            movie.setSubtitle(&quot;Die zwei Türme&quot;);</b>
+<b class="nc">&nbsp;            movie.setGenre(&quot;Fantasy&quot;);</b>
+<b class="nc">&nbsp;            movie.setAgeRating(&quot;FSK 12&quot;);</b>
+<b class="nc">&nbsp;            movie.setLanguage(&quot;German&quot;);</b>
+<b class="nc">&nbsp;            movie.setPriceInCents(400);</b>
+<b class="nc">&nbsp;            movie.setDirector(&quot;Peter Jackson&quot;);</b>
+<b class="nc">&nbsp;            movie.setRating(4.6F);</b>
+<b class="nc">&nbsp;            movie.setYearPublished(Year.of(2002));</b>
+<b class="nc">&nbsp;            movie.setSeries(true);</b>
+<b class="nc">&nbsp;            movie.setStock(8);</b>
+<b class="nc">&nbsp;            movie.setCover(null);</b>
+<b class="nc">&nbsp;            movies.add(movie);</b>
+&nbsp;        }
+&nbsp;        {
+<b class="nc">&nbsp;            movie = new Movie();</b>
+<b class="nc">&nbsp;            movie.setId(atomicLong.addAndGet(1));</b>
+<b class="nc">&nbsp;            movie.setTitle(&quot;Der Herr der Ringe&quot;);</b>
+<b class="nc">&nbsp;            movie.setSubtitle(&quot;Die Rückkehr des Königs&quot;);</b>
+<b class="nc">&nbsp;            movie.setGenre(&quot;Fantasy&quot;);</b>
+<b class="nc">&nbsp;            movie.setAgeRating(&quot;FSK 12&quot;);</b>
+<b class="nc">&nbsp;            movie.setLanguage(&quot;German&quot;);</b>
+<b class="nc">&nbsp;            movie.setPriceInCents(500);</b>
+<b class="nc">&nbsp;            movie.setDirector(&quot;Peter Jackson&quot;);</b>
+<b class="nc">&nbsp;            movie.setRating(4.0F);</b>
+<b class="nc">&nbsp;            movie.setYearPublished(Year.of(2003));</b>
+<b class="nc">&nbsp;            movie.setSeries(true);</b>
+<b class="nc">&nbsp;            movie.setStock(5);</b>
+<b class="nc">&nbsp;            movie.setCover(null);</b>
+<b class="nc">&nbsp;            movies.add(movie);</b>
+&nbsp;        }
+&nbsp;        {
+<b class="nc">&nbsp;            movie = new Movie();</b>
+<b class="nc">&nbsp;            movie.setId(atomicLong.addAndGet(1));</b>
+<b class="nc">&nbsp;            movie.setTitle(&quot;The Ring&quot;);</b>
+<b class="nc">&nbsp;            movie.setSubtitle(&quot;&quot;);</b>
+<b class="nc">&nbsp;            movie.setGenre(&quot;Horror&quot;);</b>
+<b class="nc">&nbsp;            movie.setAgeRating(&quot;FSK 16&quot;);</b>
+<b class="nc">&nbsp;            movie.setLanguage(&quot;English&quot;);</b>
+<b class="nc">&nbsp;            movie.setPriceInCents(200);</b>
+<b class="nc">&nbsp;            movie.setDirector(&quot;Gore Verbinski&quot;);</b>
+<b class="nc">&nbsp;            movie.setRating(3.2F);</b>
+<b class="nc">&nbsp;            movie.setYearPublished(Year.of(2002));</b>
+<b class="nc">&nbsp;            movie.setSeries(false);</b>
+<b class="nc">&nbsp;            movie.setStock(3);</b>
+<b class="nc">&nbsp;            movie.setCover(null);</b>
+<b class="nc">&nbsp;            movies.add(movie);</b>
+&nbsp;        }
+&nbsp;        {
+<b class="nc">&nbsp;            movie = new Movie();</b>
+<b class="nc">&nbsp;            movie.setId(atomicLong.addAndGet(1));</b>
+<b class="nc">&nbsp;            movie.setTitle(&quot;Der Lorax&quot;);</b>
+<b class="nc">&nbsp;            movie.setSubtitle(&quot;&quot;);</b>
+<b class="nc">&nbsp;            movie.setGenre(&quot;Kinder&quot;);</b>
+<b class="nc">&nbsp;            movie.setAgeRating(&quot;FSK 0&quot;);</b>
+<b class="nc">&nbsp;            movie.setLanguage(&quot;German&quot;);</b>
+<b class="nc">&nbsp;            movie.setPriceInCents(120);</b>
+<b class="nc">&nbsp;            movie.setDirector(&quot;Chris Renaud&quot;);</b>
+<b class="nc">&nbsp;            movie.setRating(3.0F);</b>
+<b class="nc">&nbsp;            movie.setYearPublished(Year.of(2012));</b>
+<b class="nc">&nbsp;            movie.setSeries(false);</b>
+<b class="nc">&nbsp;            movie.setStock(8);</b>
+<b class="nc">&nbsp;            movie.setCover(null);</b>
+<b class="nc">&nbsp;            movies.add(movie);</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+<b class="nc">&nbsp;    private HashSet&lt;Movie&gt; movies = new HashSet&lt;&gt;();</b>
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public Movie create(Movie movie) {
+<b class="nc">&nbsp;        movie.setId(atomicLong.addAndGet(1));</b>
+<b class="nc">&nbsp;        movies.add(movie);</b>
+<b class="nc">&nbsp;        return movie;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public Movie read(Long id) {
+<b class="nc">&nbsp;        for (Movie movie : movies) {</b>
+<b class="nc">&nbsp;            if (movie.getId() == id) {</b>
+<b class="nc">&nbsp;                return movie;</b>
+&nbsp;            }
+<b class="nc">&nbsp;        }</b>
+<b class="nc">&nbsp;        return null;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public List&lt;Movie&gt; read() {
+<b class="nc">&nbsp;        ArrayList&lt;Movie&gt; m = new ArrayList&lt;&gt;(this.movies);</b>
+<b class="nc">&nbsp;        m.sort((o1, o2) -&gt; o1.getId().compareTo(o2.getId()));</b>
+<b class="nc">&nbsp;        return m;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public Movie update(Movie movie) {
+<b class="nc">&nbsp;        this.movies.add(movie);</b>
+<b class="nc">&nbsp;        return movie;</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    public void delete(Movie movie) {
+<b class="nc">&nbsp;        this.movies.remove(movie);</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-11-15 11:14</div>
+</div>
+</body>
+</html>

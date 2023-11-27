@@ -1,0 +1,50 @@
+/**
+ * Hagn Maximilian
+ * 11808237
+ * Exercise 01
+ **/
+
+# Question 1
+
+## What was the effort in terms of time and resources that had to be invested to achieve (close to)
+full code coverage in the described project?
+
+In this project, a software comprised of roughly 25,000 lines of code was developed. To attain a
+statement and branch test coverage of 99.9%, two developers worked on the project for a span of
+two years. As a result, a cumulative effort of four person-years was required. During the interviews,
+it was discovered that test coverage exhibited a linear increase up to approximately 85%. Beyond
+this threshold, achieving higher test coverage demanded a significantly greater amount of effort.
+
+# Question 2
+
+## What is the Pareto principle and how does it relate to code coverage?
+
+The Pareto, or 80/20 principle, posits that 80% of results can be attained with 20% of the effort.
+This concept is applicable across numerous domains, including software testing. In this particular
+context, it implies that achieving 80% of test coverage requires only about 20% of the effort.
+However, considerably more effort is necessary to achieve the remaining 20% of test coverage.
+
+## Is this principle applicable to the case described in the paper?
+
+In my view, this principle is not suitable for this project, as it is of critical importance
+and therefore requires more than just minimal testing. Additionally, the financial interest
+should be sufficiently high to justify allocating more resources to testing, since failure could result in
+severe consequences. Nonetheless, it remains a matter of debate whether reaching 100% test coverage
+is essential or if other factors should also be taken into account when assessing the software's quality.
+
+# Question 3
+
+Assume you are responsible for an online shop (frontend and backend) that sells
+refurbished mobile phones and electronic devices to consumers. What test coverage
+(in percent) would you consider a reasonable requirement for the implementation of
+the shop? Why?
+
+In my view, it is essential to differentiate between the various functions of a website.
+For instance, achieving higher coverage for critical functions, such as user account login or
+payment transactions, is far more important than high coverage for features related to the
+general usability. Generally, I believe that an average test coverage of around 85% is satisfactory,
+and a test coverage of 90% indicates that the company is set up well. However, the prioritization of
+individual function tests is more crucial than the overall test coverage. For instance, if all features
+except the payment process are tested, a high test coverage can be misleading, as it may not reflect the
+untested critical area. Therefore, it is important to establish a testing strategy that prioritizes
+critical functions to detect faults in critical areas.

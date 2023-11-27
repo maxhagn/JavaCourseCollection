@@ -1,0 +1,191 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > TheMovieDbMovieDataService</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">at.ac.tuwien.qs.movierental</a>
+</div>
+
+<h1>Coverage Summary for Class: TheMovieDbMovieDataService (at.ac.tuwien.qs.movierental)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">TheMovieDbMovieDataService</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (3/3)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    90,5%
+  </span>
+  <span class="absValue">
+    (38/42)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package at.ac.tuwien.qs.movierental;
+&nbsp;
+&nbsp;import com.fasterxml.jackson.databind.ObjectMapper;
+&nbsp;
+&nbsp;import java.io.BufferedReader;
+&nbsp;import java.io.IOException;
+&nbsp;import java.io.InputStreamReader;
+&nbsp;import java.net.HttpURLConnection;
+&nbsp;import java.net.URL;
+&nbsp;import java.net.URLEncoder;
+&nbsp;import java.time.Year;
+&nbsp;import java.util.*;
+&nbsp;import java.util.stream.Stream;
+&nbsp;
+&nbsp;
+&nbsp;/**
+&nbsp; * Based on the Implementation on: http://www.mkyong.com/java/how-to-send-http-request-getpost-in-java/
+&nbsp; */
+<b class="fc">&nbsp;public class TheMovieDbMovieDataService implements MovieDataService {</b>
+&nbsp;
+&nbsp;    private static final String API_KEY = &quot;7cf77b2fecb0e4e630aa326f9eaafbe3&quot;;
+&nbsp;    private static final String SEARCH_URL = &quot;http://api.themoviedb.org/3/search/movie?api_key=&quot; + API_KEY;
+&nbsp;    private static final String USER_AGENT = &quot;Mozilla/5.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2.3) Gecko/20100401 Firefox/3.6.3&quot;;
+<b class="fc">&nbsp;    private static final Calendar CALENDAR = Calendar.getInstance();</b>
+&nbsp;
+&nbsp;    /**
+&nbsp;     * Search movies in TMDb.
+&nbsp;     * Don&#39;t forget that TMDb uses a different naming scheme instead of a title and a subtitle in different fields,#
+&nbsp;     * they use on field for both values, separated by &quot; - &quot;.
+&nbsp;     * Don&#39;t forget that TMDb uses a different rating range from 0 to 10.
+&nbsp;     *
+&nbsp;     * @param movie which should be looked up
+&nbsp;     * @return
+&nbsp;     * @throws ServiceNotAvailableException
+&nbsp;     */
+&nbsp;    @Override
+&nbsp;    public List&lt;Movie&gt; searchMovies(Movie movie) throws ServiceNotAvailableException {
+<b class="fc">&nbsp;        ArrayList&lt;Movie&gt; returnMovies = new ArrayList&lt;&gt;();</b>
+&nbsp;        try {
+<b class="fc">&nbsp;            String title = movie.getTitle();</b>
+<b class="fc">&nbsp;            if (movie.getSubtitle() != null &amp;&amp; !movie.getSubtitle().isEmpty()) {</b>
+<b class="nc">&nbsp;                title += &quot; &quot; + movie.getSubtitle();</b>
+&nbsp;            }
+<b class="fc">&nbsp;            String year = &quot;&quot;;</b>
+<b class="fc">&nbsp;            if (movie.getYearPublished() != null) {</b>
+<b class="fc">&nbsp;                year += movie.getYearPublished().toString();</b>
+&nbsp;            }
+<b class="fc">&nbsp;            URL url = null;</b>
+<b class="fc">&nbsp;            url = new URL(SEARCH_URL + &quot;&amp;query=&quot; + URLEncoder.encode(title, &quot;UTF-8&quot;).replace(&quot;+&quot;, &quot;%20&quot;) + &quot;&amp;primary_release_year=&quot; + year);</b>
+<b class="fc">&nbsp;            System.out.println(&quot;Sending Query: &quot; + url);</b>
+<b class="fc">&nbsp;            HttpURLConnection con = (HttpURLConnection) url.openConnection();</b>
+<b class="fc">&nbsp;            con.setRequestMethod(&quot;GET&quot;);</b>
+<b class="fc">&nbsp;            con.setRequestProperty(&quot;User-Agent&quot;, USER_AGENT);</b>
+<b class="fc">&nbsp;            BufferedReader in = new BufferedReader(new InputStreamReader(con.getInputStream()));</b>
+&nbsp;            String inputLine;
+<b class="fc">&nbsp;            StringBuffer response = new StringBuffer();</b>
+<b class="fc">&nbsp;            while ((inputLine = in.readLine()) != null) {</b>
+<b class="fc">&nbsp;                response.append(inputLine);</b>
+&nbsp;            }
+<b class="fc">&nbsp;            in.close();</b>
+<b class="fc">&nbsp;            System.out.println(&quot;Response was: &quot; + response);</b>
+<b class="fc">&nbsp;            ObjectMapper mapper = new ObjectMapper();</b>
+<b class="fc">&nbsp;            TMDbResult tmDbResult = mapper.readValue(response.toString(), TMDbResult.class);</b>
+<b class="fc">&nbsp;            for (TMDbMovie tmDbMovie : tmDbResult.movies) {</b>
+<b class="fc">&nbsp;                Movie resultMovie = new Movie();</b>
+<b class="fc">&nbsp;                if (tmDbMovie.originalTitle == null) {</b>
+<b class="nc">&nbsp;                    throw new ServiceNotAvailableException(&quot;The service returned a movie without a title.&quot;);</b>
+&nbsp;                }
+<b class="fc">&nbsp;                String[] titles = tmDbMovie.originalTitle.split(&quot;\\-&quot;, 2);</b>
+<b class="fc">&nbsp;                resultMovie.setTitle(titles[0].trim());</b>
+<b class="fc">&nbsp;                if (titles.length == 2) {</b>
+<b class="fc">&nbsp;                    resultMovie.setSubtitle(titles[1].trim());</b>
+&nbsp;                }
+<b class="fc">&nbsp;                if (tmDbMovie.originalTitle.equals(movie.getTitle())) {</b>
+<b class="fc">&nbsp;                    resultMovie.setRating(tmDbMovie.voteAverage / 2);</b>
+<b class="fc">&nbsp;                    if (tmDbMovie.releaseDate != null) {</b>
+<b class="fc">&nbsp;                        CALENDAR.setTime(tmDbMovie.releaseDate);</b>
+<b class="fc">&nbsp;                        resultMovie.setYearPublished(Year.of(CALENDAR.get(Calendar.YEAR)));</b>
+&nbsp;                    }
+<b class="fc">&nbsp;                    returnMovies.add(resultMovie);</b>
+&nbsp;                }
+<b class="fc">&nbsp;            }</b>
+<b class="nc">&nbsp;        } catch (IOException e) {</b>
+<b class="nc">&nbsp;            throw new ServiceNotAvailableException(e);</b>
+<b class="fc">&nbsp;        }</b>
+<b class="fc">&nbsp;        return returnMovies;</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-11-15 11:14</div>
+</div>
+</body>
+</html>

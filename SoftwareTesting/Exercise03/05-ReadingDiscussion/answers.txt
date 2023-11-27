@@ -1,0 +1,61 @@
+/**
+ * Hagn Maximilian
+ * 11808237
+ * Exercise 03
+ **/
+
+# How does the described model-based testing approach overcome the typical limitations of (static) automated regression testing?
+Answer this question by briefly referring to the described case.
+
+The case study highlighted that traditional test case creation is mostly based on experience instead of
+systematic methods and therefore either too many redundant test cases exist or whole areas of an application
+remain untested. In model-based testing, models are developed for individual processes of an application.
+From these models, test cases can be automatically generated that cover all transitions. The creation of
+test cases from a model is thus based on a systematic approach and thus a good and consistent code coverage
+can be achieved. Furthermore, fewer redundant test cases are generated. Furthermore, the case study points
+out that the maintainability of test cases can be an enormous cost factor. In model-based testing, the
+maintainability is much better, since only the model has to be adapted. All test cases can then be generated
+again from the new model.
+
+# Online and offline model-based testing
+
+## What is the difference between online and offline model-based testing?
+
+Online model-based testing means that test generation and execution occur directly after each other.
+In this case, the tests cannot be further selected and cannot be used in other environments.
+Offline model testing means that the test cases are first generated from the model.
+These can subsequently be used like conventionally developed tests.
+Thus, a selection can be made manually, the tests can be further developed and exported to other environments.
+
+## Which of these two approaches has been used in the case study?
+
+In the case study, the offline approach was chosen. This is made clear by the fact that the generation of the
+test cases is done through the developed tool IDATG. The generated test cases can then be used in various tools
+for test execution, such as "TestPartner".
+
+# Return of Investment (ROI)
+
+## What test strategies are compared in calculating the ROI?
+
+In the return of investment calculation, manual testing was compared to the model-based approach.
+Manual test cases refer to tests that have to be performed manually by testers at each run.
+
+## When has the break-even point been reached?
+
+The break-even point was reached after four test cycles. At this point, 855 hours were spent on
+the model-based approach and 863 hours on the manual approach.
+
+## What are potential problems in this calculation?
+
+First, it should be noted that this calculation assumes that both manual testing and the
+model-based approach detect exactly the same number of defects in the program. It is not
+described in detail how effective both methods really worked. Furthermore, the time for
+the manual tests was only estimated and since no manual tests were performed, only an
+estimate could be made. Furthermore, very little is said about possible overhead costs.
+For example, only the time needed to create the tests is calculated, but not the costs
+for project management, coordination meetings and other costs. These overhead costs
+could be significantly higher for new problems, since the uncertainty is higher and
+the experience is less. Furthermore, the calculation is based on working hours only.
+However, the costs for one person day can differ drastically. For example, if we
+assume that an architect for models takes a much higher hourly rate than an usual
+tester, because he has more specialized skills, the calculation could deviate further from reality.

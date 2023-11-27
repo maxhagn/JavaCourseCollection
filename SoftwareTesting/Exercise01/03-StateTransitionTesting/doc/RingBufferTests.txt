@@ -1,0 +1,17 @@
+/**
+ * Hagn Maximilian
+ * 11808237
+ * Exercise 01
+ **/
+
+VALID
+1) init(3) -EMPTY- delete()   -final
+2) init(3) -EMPTY- enqueue(a) -FILLED- dequeue()  -EMPTY-
+3) init(3) -EMPTY- enqueue(a) -FILLED- peek()     -FILLED-
+4) init(3) -EMPTY- enqueue(a) -FILLED- enqueue(b) -FILLED- dequeue()  -FILLED-
+5) init(3) -EMPTY- enqueue(a) -FILLED- enqueue(b) -FILLED- peek()     -FILLED-
+6) init(3) -EMPTY- enqueue(a) -FILLED- enqueue(b) -FILLED- enqueue(c) -FULL-   peek() -FULL-
+
+INVALID
+7) init(3) -EMPTY- peek()
+8) init(3) -EMPTY- dequeue()

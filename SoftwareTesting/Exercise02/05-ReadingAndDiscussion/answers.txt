@@ -1,0 +1,65 @@
+/**
+ * Hagn Maximilian
+ * 11808237
+ * Exercise 02
+ **/
+
+# What is test flakiness and what the (negative) consequences of flakiness?
+
+Flaky tests are tests that are not deterministic. This means that not only
+one successor state exists for an input. If a unit test for a java application
+is also written in java, the methods to be tested can be called directly.
+In this case there is always only one successor state. For instance, if we
+execute a function, we always get either a correct or a negative result and
+can continue to work on the basis of this result. For instance, when testing
+with Selenium this is not the case and the same outcome of a test is
+not guaranteed. For instance, the time needed to perform a function matters.
+If a page is not yet fully loaded, a test may fail because some elements
+cannot be found on the page. In summary, flaky tests do not guarantee that
+the test will produce the same result every time.
+
+In the underlying paper, two main disadvantages are addressed. The first
+disadvantage is that the confidence that the code is of good quality
+suffers if test cases do not always complete successfully. In this case,
+we cannot be certain whether the underlying code has errors or whether
+an incorrect test environment is responsible for the failure. This inevitably
+leads to the second disadvantage, namely that the verification of the test
+cases takes up many resources and costs. If there is a test failure, it must
+be checked whether the error occurs in the code or in the environment. If a
+lot of resources have to be spent on flaky tests, the quality of the overall
+test strategy will also decrease, as less coverage might be achieved or
+flaky tests might simply be deactivated.
+
+# What different waiting strategies were investigated in the paper and which of
+them performed best with respect to flakiness? Why?
+
+In the underlying paper, several strategies were tested. The first strategy
+"No Wait" describes the default behavior and fails if an element is not found.
+The second strategy "Thread Wait" uses Java::sleep to wait for a fixed time.
+Selenium also provides a construct called "Explicit Wait" that waits either
+for a specified time or until a specified event occurs. Furthermore, Selenium
+also offers "Angular Wait" for the Chrome driver, which waits until the Angular
+framework has processed all requests.
+
+The authors concluded that "Thread Wait" had the lowest number of failed tests.
+A fixed wait time of five seconds was specified. The reason for the relatively
+good results is that the browser has enough time in these five seconds to process
+the essential requests and load most of the elements. However, it should
+be noted that other parameters such as WebDriver, memory, processor, and
+operating system also have an impact on the number of failed tests. It is
+particularly interesting that most tests failed with "Explicit Wait", although
+a time of 5 seconds was also set for this method. This approach was even worse
+than the default "No Wait" strategy.
+
+# What effects were observed when restarting the browser between each
+individual test run?
+
+By default, a new browser is started for each test run. The authors
+instead tested an approach where one browser instance is shared across
+all tests. To create a consistent starting point for all tests,
+a method where a user is logged out was used. In this scenario, the
+authors found that the runtime of the tests can be significantly reduced.
+Furthermore, they did not notice that more test cases failed as a result
+of this approach. Conversely, it can be stated that the flakiness of the
+test cases is not reduced by opening a new browser instance each time.
+On the other hand, the build time is increased significantly.

@@ -1,0 +1,186 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > MovieRentalController</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">at.ac.tuwien.qs.movierental.ui.controller</a>
+</div>
+
+<h1>Coverage Summary for Class: MovieRentalController (at.ac.tuwien.qs.movierental.ui.controller)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">MovieRentalController</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/10)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/30)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package at.ac.tuwien.qs.movierental.ui.controller;
+&nbsp;
+&nbsp;import javafx.fxml.FXML;
+&nbsp;import javafx.scene.Node;
+&nbsp;import javafx.scene.control.Alert;
+&nbsp;import javafx.scene.control.ButtonType;
+&nbsp;import javafx.scene.control.Tab;
+&nbsp;import javafx.stage.Stage;
+&nbsp;import javafx.stage.WindowEvent;
+&nbsp;
+&nbsp;import java.util.Optional;
+&nbsp;
+<b class="nc">&nbsp;public class MovieRentalController {</b>
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private Tab tabMovies;
+&nbsp;    @FXML
+&nbsp;    private Tab tabCustomers;
+&nbsp;    @FXML
+&nbsp;    private Tab tabRental;
+&nbsp;
+&nbsp;    private Stage primaryStage;
+&nbsp;
+&nbsp;    public void setMoviesTabContent(Node moviesTabContent) {
+<b class="nc">&nbsp;        this.tabMovies.setContent(moviesTabContent);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setCustomersTabContent(Node customersTabContent) {
+<b class="nc">&nbsp;        this.tabCustomers.setContent(customersTabContent);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setRentalTabContent(Node rentalTabContent) {
+<b class="nc">&nbsp;        this.tabRental.setContent(rentalTabContent);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setPrimaryStage(Stage primaryStage) {
+<b class="nc">&nbsp;        this.primaryStage = primaryStage;</b>
+<b class="nc">&nbsp;        this.primaryStage.setOnCloseRequest(event -&gt;</b>
+&nbsp;        {
+<b class="nc">&nbsp;            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);</b>
+<b class="nc">&nbsp;            alert.setTitle(&quot;Filmverleih | Programm beenden&quot;);</b>
+<b class="nc">&nbsp;            alert.setHeaderText(&quot;Programm beenden?&quot;);</b>
+<b class="nc">&nbsp;            alert.setContentText(&quot;Wollen Sie das Programm wirklich beenden?\nDabei gehen alle nicht gespeicherten Daten verloren.&quot;);</b>
+<b class="nc">&nbsp;            Optional&lt;ButtonType&gt; result = alert.showAndWait();</b>
+<b class="nc">&nbsp;            if (result.get() != ButtonType.OK) {</b>
+<b class="nc">&nbsp;                event.consume();</b>
+&nbsp;            }
+&nbsp;        });
+&nbsp;    }
+&nbsp;
+&nbsp;    public void showLicense() {
+<b class="nc">&nbsp;        Alert alert = new Alert(Alert.AlertType.INFORMATION);</b>
+<b class="nc">&nbsp;        alert.setTitle(&quot;Filmverleih | Lizenzinformationen&quot;);</b>
+<b class="nc">&nbsp;        alert.setHeaderText(&quot;Lizenzinformationen&quot;);</b>
+<b class="nc">&nbsp;        alert.setContentText(&quot;&quot;);</b>
+<b class="nc">&nbsp;        alert.showAndWait();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void showAbout() {
+<b class="nc">&nbsp;        Alert alert = new Alert(Alert.AlertType.INFORMATION);</b>
+<b class="nc">&nbsp;        alert.setTitle(&quot;Filmverleih | Über das Programm&quot;);</b>
+<b class="nc">&nbsp;        alert.setHeaderText(&quot;Über das Programm&quot;);</b>
+<b class="nc">&nbsp;        alert.setContentText(&quot;Dies ist ein Beispielprogramm zu Lehrzwecken das im Rahmen der Lehrveranstaltung &quot; +</b>
+&nbsp;                &quot;Software-Qualitätssicherung an der Technischen Universität Wien entwickelt wurde.&quot;);
+<b class="nc">&nbsp;        alert.showAndWait();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void reinitDatabase() {
+<b class="nc">&nbsp;        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);</b>
+<b class="nc">&nbsp;        alert.setTitle(&quot;Filmverleih | Datenbank zurücksetzen&quot;);</b>
+<b class="nc">&nbsp;        alert.setHeaderText(&quot;Datenbank zurücksetzen?&quot;);</b>
+<b class="nc">&nbsp;        alert.setContentText(&quot;Wollen Sie die Datenbank wirklich zurücksetzen?\nDabei gehen alle Daten verloren.&quot;);</b>
+<b class="nc">&nbsp;        Optional&lt;ButtonType&gt; result = alert.showAndWait();</b>
+<b class="nc">&nbsp;        if (result.get() == ButtonType.OK) {</b>
+&nbsp;            // TODO: replace dummyDAOs with real database
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    public void exitApplication() {
+<b class="nc">&nbsp;        this.primaryStage.fireEvent(new WindowEvent(this.primaryStage, WindowEvent.WINDOW_CLOSE_REQUEST));</b>
+&nbsp;    }
+&nbsp;
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-11-15 11:14</div>
+</div>
+</body>
+</html>

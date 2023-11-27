@@ -1,0 +1,17 @@
+# Coverage Interpretation
+## Analyse
+Bei Betrachtung des Coverage Reports muss festgestellt werden, dass die Abdeckung der Tests nicht ausreichend ist. Im Package 'UI' wurde sogar kein einziger Test geschrieben. Im Package 'movierental' wurden zwar mehr Tests durchgeführt, jedoch gibt es auch in diesem Package Klassen die gar nicht getestet wurden.
+
+Besonders negativ wirkt sich die niedrige Abdeckung der Klassen 'CustomerManagementController' und 'MovieManagementController' aus, da diese wichtige Funktionen für das tägliche Geschäft enthält. In diesen Klassen sollten umbedingt weitere Testfälle ergänzt werden.
+ 
+Positiv hervorgehoben werden können die Klassen 'SimpleRatingService' und 'TheMovieDbMovieDataService'. Diese Klassen weisen eine Zeilenabdeckung von über 90% auf.
+
+Bei Klassen mit dem Prefix Dummy wird grundsätzlich keine hohe Abdeckung benötigt, da diese nicht in der Produktion verwendet werden.
+
+In den Objektklassen gibt es eine Vielzahl von Getter und Setter Methoden die nicht getestet wurden. Hier sollte vorerst die Testabdeckung in den Klassen die diese Objekte instanzieren erhöht werden. Anschließend können die Objektklassen erneut betrachtet werden. Es können somit zum Beispiel auch Getter beziehungsweise Setterfunktionen gefunden werden, die niemals benötigt werden. Ein Entfernen dieser würde somit zu höherem Klassenzusammenhalt betragen.
+
+## Verbesserungspotential
+Verbessungen könnten unter anderem getroffen werden, indem ein minimaler Prozentsatz festgelegt wird, zu dem jede Klasse gestet werden muss. Zum Beispiel könnte ein Ziel von 90% Zeilenabdeckung für Controller festgelegt werden. Des Weiteren könnte eine bessere Aufteilung der Klassen zu Packages helfen, die durchschnittliche Abdeckung besser erkennen zu können. So könnten zum Beispiel alle DAO's, alle Controller, alle Exceptions und alle Services jeweils einem Package zugeordnet werden. So könnte auf einen Blick erkannt werden, in welchen Bereichen die Testabdeckung verbessert werden muss.
+
+## Risiken
+Ein Risiko besteht darin, dass die entwickelte Software von den Anforderungen abweicht. Um dieses Risiko einzudämmen sollte für jede funktionale Anforderung eine Menge aus Normalfall-, Feherfall- und Sonderfalltests verwendet werden. Des Weiteren können durch fehlende Testfälle Fehler die durch das Refactoring, das wegnehmen oder hinzufügen von Codestücken entstehen unbeachtet bleiben. Durch ausreichende Tests kann sichergestellt werden, dass Änderungen oder Arbeiten an neuen Codestücken bestehende Funktionen nicht verändern.

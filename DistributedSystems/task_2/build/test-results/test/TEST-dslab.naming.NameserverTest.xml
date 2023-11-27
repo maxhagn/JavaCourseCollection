@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="dslab.naming.NameserverTest" tests="4" skipped="0" failures="0" errors="0" timestamp="2021-01-07T15:44:14" hostname="Pascals-MacBook-Pro.local" time="38.148">
+  <properties/>
+  <testcase name="ns01_startAndShutdownRootNameserver_createsAndUnexportsRegistryCorrectly" classname="dslab.naming.NameserverTest" time="6.033"/>
+  <testcase name="ns02_startRootNameserver_registersRemoteObjectCorrectly" classname="dslab.naming.NameserverTest" time="6.046"/>
+  <testcase name="ns03_startingZoneNameserver_registersNameserverCorrectly" classname="dslab.naming.NameserverTest" time="13.026"/>
+  <testcase name="ns04_registerAndLookupMailboxServer_registersAndReturnsAddressCorrectly" classname="dslab.naming.NameserverTest" time="13.043"/>
+  <system-out><![CDATA['root-nameserver' nameserver started.
+'root-nameserver' Shutting server down.
+'root-nameserver' Server shut down.
+'root-nameserver' nameserver started.
+'root-nameserver' Shutting server down.
+'root-nameserver' Server shut down.
+'root-nameserver' nameserver started.
+'root-nameserver': Registering nameserver for zone 'planet'.
+'planet' nameserver started.
+'planet' Shutting server down.
+'planet' Server shut down.
+'root-nameserver' Shutting server down.
+'root-nameserver' Server shut down.
+'root-nameserver' nameserver started.
+'root-nameserver': Registering nameserver for zone 'planet'.
+'planet' nameserver started.
+'root-nameserver': Forwarding mailbox register request registerMailboxServer(mars) to 'planet'.
+'planet': Registering mailbox server for zone 'mars'.
+'planet': Nameserver for mars requested by transfer server.
+'planet' Shutting server down.
+'planet' Server shut down.
+'root-nameserver' Shutting server down.
+'root-nameserver' Server shut down.
+]]></system-out>
+  <system-err><![CDATA[Jän. 07, 2021 4:44:14 NACHM. dslab.naming.NameserverTest ns01_startAndShutdownRootNameserver_createsAndUnexportsRegistryCorrectly
+INFO: Starting ns-root thread
+Jän. 07, 2021 4:44:17 NACHM. dslab.naming.NameserverTest sendShutdown
+INFO: Sending shutdown to component component
+Jän. 07, 2021 4:44:20 NACHM. dslab.naming.NameserverTest ns02_startRootNameserver_registersRemoteObjectCorrectly
+INFO: Starting ns-root thread
+Jän. 07, 2021 4:44:23 NACHM. dslab.naming.NameserverTest ns02_startRootNameserver_registersRemoteObjectCorrectly
+INFO: Looking up root-nameserver in registry
+Jän. 07, 2021 4:44:23 NACHM. dslab.naming.NameserverTest sendShutdown
+INFO: Sending shutdown to component component
+Jän. 07, 2021 4:44:26 NACHM. dslab.naming.NameserverTest ns03_startingZoneNameserver_registersNameserverCorrectly
+INFO: Starting ns-root thread
+Jän. 07, 2021 4:44:29 NACHM. dslab.naming.NameserverTest ns03_startingZoneNameserver_registersNameserverCorrectly
+INFO: Starting ns-planet thread
+Jän. 07, 2021 4:44:32 NACHM. dslab.naming.NameserverTest ns03_startingZoneNameserver_registersNameserverCorrectly
+INFO: Looking up root-nameserver in registry
+Jän. 07, 2021 4:44:32 NACHM. dslab.naming.NameserverTest ns03_startingZoneNameserver_registersNameserverCorrectly
+INFO: Getting nameserver 'planet' from server remote
+Jän. 07, 2021 4:44:32 NACHM. dslab.naming.NameserverTest ns03_startingZoneNameserver_registersNameserverCorrectly
+INFO: Sending 'nameservers' command
+Jän. 07, 2021 4:44:33 NACHM. dslab.naming.NameserverTest ns03_startingZoneNameserver_registersNameserverCorrectly
+INFO: Got output: ns-root>1. planet
+Jän. 07, 2021 4:44:33 NACHM. dslab.naming.NameserverTest sendShutdown
+INFO: Sending shutdown to component component
+Jän. 07, 2021 4:44:36 NACHM. dslab.naming.NameserverTest sendShutdown
+INFO: Sending shutdown to component component
+Jän. 07, 2021 4:44:39 NACHM. dslab.naming.NameserverTest ns04_registerAndLookupMailboxServer_registersAndReturnsAddressCorrectly
+INFO: Starting ns-root thread
+Jän. 07, 2021 4:44:42 NACHM. dslab.naming.NameserverTest ns04_registerAndLookupMailboxServer_registersAndReturnsAddressCorrectly
+INFO: Starting ns-planet thread
+Jän. 07, 2021 4:44:45 NACHM. dslab.naming.NameserverTest ns04_registerAndLookupMailboxServer_registersAndReturnsAddressCorrectly
+INFO: Looking up root-nameserver in registry
+Jän. 07, 2021 4:44:45 NACHM. dslab.naming.NameserverTest ns04_registerAndLookupMailboxServer_registersAndReturnsAddressCorrectly
+INFO: Registering mailbox server for @mars.planet mail domain
+Jän. 07, 2021 4:44:46 NACHM. dslab.naming.NameserverTest ns04_registerAndLookupMailboxServer_registersAndReturnsAddressCorrectly
+INFO: Looking up 'mars' at nameserver planet
+Jän. 07, 2021 4:44:46 NACHM. dslab.naming.NameserverTest sendShutdown
+INFO: Sending shutdown to component component
+Jän. 07, 2021 4:44:49 NACHM. dslab.naming.NameserverTest sendShutdown
+INFO: Sending shutdown to component component
+]]></system-err>
+</testsuite>

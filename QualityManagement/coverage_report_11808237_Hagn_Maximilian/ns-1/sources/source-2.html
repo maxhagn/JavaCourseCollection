@@ -1,0 +1,409 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > CustomerManagementController</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">at.ac.tuwien.qs.movierental</a>
+</div>
+
+<h1>Coverage Summary for Class: CustomerManagementController (at.ac.tuwien.qs.movierental)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">CustomerManagementController</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/14)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/151)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package at.ac.tuwien.qs.movierental;
+&nbsp;
+&nbsp;import at.ac.tuwien.qs.movierental.ui.controls.BooleanCell;
+&nbsp;import at.ac.tuwien.qs.movierental.ui.controls.TemporalAccessorCell;
+&nbsp;import javafx.collections.ObservableList;
+&nbsp;import javafx.collections.transformation.FilteredList;
+&nbsp;import javafx.collections.transformation.SortedList;
+&nbsp;import javafx.event.ActionEvent;
+&nbsp;import javafx.fxml.FXML;
+&nbsp;import javafx.scene.Node;
+&nbsp;import javafx.scene.control.*;
+&nbsp;import javafx.scene.image.Image;
+&nbsp;import javafx.scene.image.ImageView;
+&nbsp;import javafx.stage.FileChooser;
+&nbsp;import javafx.stage.FileChooser.ExtensionFilter;
+&nbsp;
+&nbsp;import java.io.File;
+&nbsp;import java.io.FileInputStream;
+&nbsp;import java.io.FileNotFoundException;
+&nbsp;import java.time.LocalDate;
+&nbsp;import java.time.format.DateTimeFormatter;
+&nbsp;import java.time.format.DateTimeParseException;
+&nbsp;
+<b class="nc">&nbsp;public class CustomerManagementController {</b>
+&nbsp;
+<b class="nc">&nbsp;    private static final Image NO_PHOTO = new Image(RentalController.class.getResourceAsStream(&quot;/images/user.png&quot;));</b>
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private TableView&lt;Customer&gt; tblCustomers;
+&nbsp;    @FXML
+&nbsp;    private TableColumn&lt;Customer, Long&gt; tcCustomerId;
+&nbsp;    @FXML
+&nbsp;    private TableColumn&lt;Customer, String&gt; tcFirstName;
+&nbsp;    @FXML
+&nbsp;    private TableColumn&lt;Customer, String&gt; tcLastName;
+&nbsp;    @FXML
+&nbsp;    private TableColumn&lt;Customer, String&gt; tcEmail;
+&nbsp;    @FXML
+&nbsp;    private TableColumn&lt;Customer, LocalDate&gt; tcBirthday;
+&nbsp;    @FXML
+&nbsp;    private TableColumn&lt;Customer, String&gt; tcPhone;
+&nbsp;    @FXML
+&nbsp;    private TableColumn&lt;Customer, String&gt; tcZipCode;
+&nbsp;    @FXML
+&nbsp;    private TableColumn&lt;Customer, Boolean&gt; tcPatron;
+&nbsp;    @FXML
+&nbsp;    private TableColumn&lt;Customer, Integer&gt; tcVideopoints;
+&nbsp;    @FXML
+&nbsp;    private TableColumn&lt;Customer, Integer&gt; tcRent;
+&nbsp;    @FXML
+&nbsp;    private TableColumn&lt;Customer, Integer&gt; tcOverdue;
+&nbsp;    @FXML
+&nbsp;    private Label lblCustomerID;
+&nbsp;    @FXML
+&nbsp;    private TextField txtFirstName;
+&nbsp;    @FXML
+&nbsp;    private TextField txtLastName;
+&nbsp;    @FXML
+&nbsp;    private TextField txtEmail;
+&nbsp;    @FXML
+&nbsp;    private TextField txtPhone;
+&nbsp;    @FXML
+&nbsp;    private TextField txtBirthday;
+&nbsp;    @FXML
+&nbsp;    private CheckBox chkPatron;
+&nbsp;    @FXML
+&nbsp;    private TextArea txtAddress;
+&nbsp;    @FXML
+&nbsp;    private TextField txtZipCode;
+&nbsp;    @FXML
+&nbsp;    private TextField txtCity;
+&nbsp;    @FXML
+&nbsp;    private Label lblVideopoints;
+&nbsp;    @FXML
+&nbsp;    private ImageView imgPhoto;
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private TextField txtFilter;
+&nbsp;    @FXML
+&nbsp;    private ToggleButton tglFilter;
+&nbsp;
+&nbsp;    private File filePhoto;
+&nbsp;
+&nbsp;    private Customer currentCustomer;
+&nbsp;
+&nbsp;    private ObservableList&lt;Customer&gt; customerObservableList;
+&nbsp;    private FilteredList&lt;Customer&gt; filteredCustomers;
+&nbsp;
+<b class="nc">&nbsp;    private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern(&quot;dd. MM. yyyy&quot;);</b>
+&nbsp;    private CustomerDAO customerDAO;
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private void initialize() {
+<b class="nc">&nbsp;        this.showCustomerDetails(null);</b>
+<b class="nc">&nbsp;        this.tcCustomerId.setCellValueFactory(cellData -&gt; cellData.getValue().idProperty());</b>
+<b class="nc">&nbsp;        this.tcFirstName.setCellValueFactory(cellData -&gt; cellData.getValue().firstNameProperty());</b>
+<b class="nc">&nbsp;        this.tcLastName.setCellValueFactory(cellData -&gt; cellData.getValue().lastNameProperty());</b>
+<b class="nc">&nbsp;        this.tcEmail.setCellValueFactory(cellData -&gt; cellData.getValue().emailProperty());</b>
+<b class="nc">&nbsp;        this.tcBirthday.setCellValueFactory(cellData -&gt; cellData.getValue().birthdayProperty());</b>
+<b class="nc">&nbsp;        this.tcBirthday.setCellFactory(param -&gt; new TemporalAccessorCell(DateTimeFormatter.ofPattern(&quot;dd. LLL yyyy&quot;)));</b>
+<b class="nc">&nbsp;        this.tcPhone.setCellValueFactory(cellData -&gt; cellData.getValue().phoneProperty());</b>
+<b class="nc">&nbsp;        this.tcZipCode.setCellValueFactory(cellData -&gt; cellData.getValue().zipCodeProperty());</b>
+<b class="nc">&nbsp;        this.tcPatron.setCellValueFactory(cellData -&gt; cellData.getValue().patronProperty());</b>
+<b class="nc">&nbsp;        this.tcPatron.setCellFactory(param -&gt; new BooleanCell());</b>
+<b class="nc">&nbsp;        this.tcVideopoints.setCellValueFactory(cellData -&gt; cellData.getValue().videopointsProperty());</b>
+<b class="nc">&nbsp;        this.txtFilter.textProperty().addListener((observable, oldValue, newValue) -&gt; {</b>
+<b class="nc">&nbsp;            if (newValue == null || newValue.isEmpty()) {</b>
+<b class="nc">&nbsp;                this.tglFilter.setSelected(false);</b>
+&nbsp;            } else {
+<b class="nc">&nbsp;                this.tglFilter.setSelected(true);</b>
+&nbsp;            }
+<b class="nc">&nbsp;            filterTable(newValue);</b>
+&nbsp;        });
+<b class="nc">&nbsp;        this.tblCustomers.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -&gt; showCustomerDetails(newValue));</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setCustomers(ObservableList&lt;Customer&gt; customerObservableList) {
+<b class="nc">&nbsp;        this.customerObservableList = customerObservableList;</b>
+<b class="nc">&nbsp;        this.tblCustomers.setItems(this.customerObservableList);</b>
+<b class="nc">&nbsp;        this.filteredCustomers = new FilteredList&lt;&gt;(this.customerObservableList, p -&gt; true);</b>
+<b class="nc">&nbsp;        SortedList&lt;Customer&gt; sortedData = new SortedList&lt;&gt;(this.filteredCustomers);</b>
+<b class="nc">&nbsp;        sortedData.comparatorProperty().bind(tblCustomers.comparatorProperty());</b>
+<b class="nc">&nbsp;        tblCustomers.setItems(sortedData);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    private void filterTable(String filter) {
+<b class="nc">&nbsp;        CustomerManagementController.this.filteredCustomers.setPredicate(customer -&gt; {</b>
+<b class="nc">&nbsp;            if (filter == null || filter.isEmpty()) {</b>
+<b class="nc">&nbsp;                return true;</b>
+&nbsp;            }
+<b class="nc">&nbsp;            String lowerCaseFilter = filter.toLowerCase();</b>
+<b class="nc">&nbsp;            return (customer.getId() != null &amp;&amp; customer.getId().toString().toLowerCase().contains(lowerCaseFilter)) ||</b>
+<b class="nc">&nbsp;                    (customer.getFirstName() != null &amp;&amp; customer.getFirstName().toLowerCase().contains(lowerCaseFilter)) ||</b>
+<b class="nc">&nbsp;                    (customer.getLastName() != null &amp;&amp; customer.getLastName().toLowerCase().contains(lowerCaseFilter)) ||</b>
+<b class="nc">&nbsp;                    (customer.getEmail() != null &amp;&amp; customer.getEmail().toLowerCase().contains(lowerCaseFilter));</b>
+&nbsp;        });
+&nbsp;    }
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private void filter() {
+<b class="nc">&nbsp;        if (this.tglFilter.isSelected()) {</b>
+<b class="nc">&nbsp;            this.filterTable(this.txtFilter.getText());</b>
+&nbsp;        } else {
+<b class="nc">&nbsp;            this.filterTable(null);</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private void showCustomerDetails(Customer customer) {
+<b class="nc">&nbsp;        this.currentCustomer = customer;</b>
+<b class="nc">&nbsp;        if (customer != null) {</b>
+<b class="nc">&nbsp;            this.lblCustomerID.setText((customer.getId() != null) ? customer.getId().toString() : &quot;&quot;);</b>
+<b class="nc">&nbsp;            this.txtFirstName.setText((customer.getFirstName() != null) ? customer.getFirstName() : &quot;&quot;);</b>
+<b class="nc">&nbsp;            this.txtLastName.setText((customer.getLastName() != null) ? customer.getLastName() : &quot;&quot;);</b>
+<b class="nc">&nbsp;            this.txtEmail.setText((customer.getEmail() != null) ? customer.getEmail() : &quot;&quot;);</b>
+<b class="nc">&nbsp;            this.txtPhone.setText((customer.getPhone() != null) ? customer.getPhone() : &quot;&quot;);</b>
+<b class="nc">&nbsp;            this.txtBirthday.setText((customer.getBirthday() != null) ? DATE_TIME_FORMATTER.format(customer.getBirthday()) : &quot;&quot;);</b>
+<b class="nc">&nbsp;            this.chkPatron.setSelected((customer.getPatron() != null) ? customer.getPatron() : false);</b>
+<b class="nc">&nbsp;            this.txtAddress.setText((customer.getAddress() != null) ? customer.getAddress() : &quot;&quot;);</b>
+<b class="nc">&nbsp;            this.txtZipCode.setText((customer.getZipCode() != null) ? customer.getZipCode() : &quot;&quot;);</b>
+<b class="nc">&nbsp;            this.txtCity.setText((customer.getCity() != null) ? customer.getCity() : &quot;&quot;);</b>
+<b class="nc">&nbsp;            this.lblVideopoints.setText((customer.getVideopoints() != null) ? customer.getVideopoints().toString() : &quot;0&quot;);</b>
+&nbsp;            try {
+<b class="nc">&nbsp;                this.filePhoto = customer.getPhoto();</b>
+<b class="nc">&nbsp;                this.imgPhoto.setImage((this.filePhoto != null) ? new Image(new FileInputStream(this.filePhoto)) : NO_PHOTO);</b>
+<b class="nc">&nbsp;            } catch (FileNotFoundException e) {</b>
+<b class="nc">&nbsp;                this.imgPhoto.setImage(NO_PHOTO);</b>
+<b class="nc">&nbsp;                this.filePhoto = null;</b>
+<b class="nc">&nbsp;            }</b>
+&nbsp;        } else {
+<b class="nc">&nbsp;            this.lblCustomerID.setText(&quot;&quot;);</b>
+<b class="nc">&nbsp;            this.txtFirstName.setText(&quot;&quot;);</b>
+<b class="nc">&nbsp;            this.txtLastName.setText(&quot;&quot;);</b>
+<b class="nc">&nbsp;            this.txtEmail.setText(&quot;&quot;);</b>
+<b class="nc">&nbsp;            this.txtPhone.setText(&quot;&quot;);</b>
+<b class="nc">&nbsp;            this.txtBirthday.setText(&quot;&quot;);</b>
+<b class="nc">&nbsp;            this.chkPatron.setSelected(false);</b>
+<b class="nc">&nbsp;            this.txtAddress.setText(&quot;&quot;);</b>
+<b class="nc">&nbsp;            this.txtZipCode.setText(&quot;&quot;);</b>
+<b class="nc">&nbsp;            this.txtCity.setText(&quot;&quot;);</b>
+<b class="nc">&nbsp;            this.lblVideopoints.setText(&quot;0&quot;);</b>
+<b class="nc">&nbsp;            this.imgPhoto.setImage(NO_PHOTO);</b>
+<b class="nc">&nbsp;            this.filePhoto = null;</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private void selectPhoto(ActionEvent actionEvent) {
+<b class="nc">&nbsp;        FileChooser fileChooser = new FileChooser();</b>
+<b class="nc">&nbsp;        fileChooser.setTitle(&quot;Filmverleih | Lade Foto&quot;);</b>
+<b class="nc">&nbsp;        fileChooser.getExtensionFilters().addAll(new ExtensionFilter(&quot;Bilddaten&quot;, &quot;*.png&quot;, &quot;*.jpg&quot;, &quot;*.jepg&quot;));</b>
+<b class="nc">&nbsp;        File file = fileChooser.showOpenDialog(((Node) actionEvent.getSource()).getScene().getWindow());</b>
+<b class="nc">&nbsp;        if (file != null &amp;&amp; file.exists()) {</b>
+&nbsp;            try {
+<b class="nc">&nbsp;                this.imgPhoto.setImage(new Image(new FileInputStream(file)));</b>
+<b class="nc">&nbsp;                this.filePhoto = file;</b>
+<b class="nc">&nbsp;            } catch (FileNotFoundException e) {</b>
+<b class="nc">&nbsp;                this.imgPhoto.setImage(NO_PHOTO);</b>
+<b class="nc">&nbsp;            }</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private void delete() {
+<b class="nc">&nbsp;        Customer selectedCustomer = this.tblCustomers.getSelectionModel().getSelectedItem();</b>
+<b class="nc">&nbsp;        this.customerObservableList.remove(selectedCustomer);</b>
+<b class="nc">&nbsp;        this.tblCustomers.getSelectionModel().clearSelection();</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private void persist() {
+<b class="nc">&nbsp;        String errorMessage = &quot;&quot;;</b>
+<b class="nc">&nbsp;        if (this.txtFirstName.getText().startsWith(&quot; &quot;) || this.txtFirstName.getText().endsWith(&quot; &quot;)) {</b>
+<b class="nc">&nbsp;            errorMessage += &quot;Der Vorname darf nicht mit einem Leerzeichen beginnen oder enden.\n&quot;;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        if (this.txtFirstName.getText().length() &lt; 3 || this.txtFirstName.getText().length() &gt; 250) {</b>
+<b class="nc">&nbsp;            errorMessage += &quot;Der Vorname muss zwischen 3 und 250 Zeichen lang sein.\n&quot;;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        if (this.txtLastName.getText().startsWith(&quot; &quot;) || this.txtLastName.getText().endsWith(&quot; &quot;)) {</b>
+<b class="nc">&nbsp;            errorMessage += &quot;Der Nachname darf nicht mit einem Leerzeichen beginnen oder enden.\n&quot;;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        if (this.txtLastName.getText().length() &lt; 3 || this.txtLastName.getText().length() &gt; 250) {</b>
+<b class="nc">&nbsp;            errorMessage += &quot;Der Nachname muss zwischen 3 und 250 Zeichen lang sein.\n&quot;;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        if (!this.txtEmail.getText().isEmpty() &amp;&amp; !this.txtEmail.getText().matches(&quot;^[_A-Za-z0-9-]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$&quot;)) {</b>
+<b class="nc">&nbsp;            errorMessage += &quot;Die eingegebene Email Adresse ist ungültig.\n&quot;;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        if (!this.txtPhone.getText().isEmpty() &amp;&amp; this.txtPhone.getText().length() &lt; 3 || this.txtPhone.getText().length() &gt; 250) {</b>
+<b class="nc">&nbsp;            errorMessage += &quot;Der Telefonnummer muss zwischen 3 und 250 Zeichen lang sein.\n&quot;;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        if (this.txtAddress.getText().startsWith(&quot; &quot;) || this.txtAddress.getText().endsWith(&quot; &quot;)) {</b>
+<b class="nc">&nbsp;            errorMessage += &quot;Die Adresse darf nicht mit einem Leerzeichen beginnen oder enden.\n&quot;;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        if (this.txtAddress.getText().length() &lt; 3 || this.txtAddress.getText().length() &gt; 1000) {</b>
+<b class="nc">&nbsp;            errorMessage += &quot;Die Adresse muss zwischen 3 und 1000 Zeichen lang sein.\n&quot;;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        if (this.txtCity.getText().startsWith(&quot; &quot;) || this.txtCity.getText().endsWith(&quot; &quot;)) {</b>
+<b class="nc">&nbsp;            errorMessage += &quot;Die Stadt darf nicht mit einem Leerzeichen beginnen oder enden.\n&quot;;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        if (this.txtCity.getText().length() &lt; 3 || this.txtCity.getText().length() &gt; 250) {</b>
+<b class="nc">&nbsp;            errorMessage += &quot;Die Stadt muss zwischen 3 und 250 Zeichen lang sein.\n&quot;;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        if (this.txtZipCode.getText().startsWith(&quot; &quot;) || this.txtZipCode.getText().endsWith(&quot; &quot;)) {</b>
+<b class="nc">&nbsp;            errorMessage += &quot;Die Postleitzahl darf nicht mit einem Leerzeichen beginnen oder enden.\n&quot;;</b>
+&nbsp;        }
+<b class="nc">&nbsp;        if (this.txtZipCode.getText().length() &lt; 2 || this.txtZipCode.getText().length() &gt; 250) {</b>
+<b class="nc">&nbsp;            errorMessage += &quot;Die Postleitzahl muss zwischen 2 und 250 Zeichen lang sein.\n&quot;;</b>
+&nbsp;        }
+&nbsp;        try {
+<b class="nc">&nbsp;            LocalDate bday = LocalDate.parse(this.txtBirthday.getText()</b>
+<b class="nc">&nbsp;                    .replaceAll(&quot;\\s&quot;, &quot;&quot;)</b>
+<b class="nc">&nbsp;                    .replaceAll(&quot;(^\\d\\.)&quot;, &quot;0$1&quot;)</b>
+<b class="nc">&nbsp;                    .replaceAll(&quot;(\\.)(\\d\\.)&quot;, &quot;.0$2&quot;)</b>
+<b class="nc">&nbsp;                    .replaceAll(&quot;\\.&quot;, &quot;. &quot;), DATE_TIME_FORMATTER);</b>
+<b class="nc">&nbsp;            if (bday.isBefore(LocalDate.now().minusYears(120L)) || bday.isAfter(LocalDate.now())) {</b>
+<b class="nc">&nbsp;                errorMessage += &quot;Das eingegebene Geburtsdatum darf maximal 120 Jahre in der Vergangenheit liegen.\n&quot;;</b>
+&nbsp;            }
+<b class="nc">&nbsp;        } catch (DateTimeParseException e) {</b>
+<b class="nc">&nbsp;            errorMessage += &quot;Das eingegebene Geburtsdatum ist ungültig.\n&quot;;</b>
+<b class="nc">&nbsp;        }</b>
+<b class="nc">&nbsp;        if (!errorMessage.isEmpty()) {</b>
+<b class="nc">&nbsp;            Alert alert = new Alert(Alert.AlertType.ERROR);</b>
+<b class="nc">&nbsp;            alert.setTitle(&quot;Filmverleih | Eingabefehler&quot;);</b>
+<b class="nc">&nbsp;            alert.setHeaderText(&quot;Folgende Daten der Eingabe sind Fehlerhaft&quot;);</b>
+<b class="nc">&nbsp;            alert.setContentText(errorMessage);</b>
+<b class="nc">&nbsp;            alert.showAndWait();</b>
+<b class="nc">&nbsp;        } else {</b>
+<b class="nc">&nbsp;            Customer customer = currentCustomer;</b>
+<b class="nc">&nbsp;            if (currentCustomer == null) {</b>
+<b class="nc">&nbsp;                customer = new Customer();</b>
+&nbsp;            }
+<b class="nc">&nbsp;            customer.setFirstName(this.txtFirstName.getText());</b>
+<b class="nc">&nbsp;            customer.setLastName(this.txtLastName.getText());</b>
+<b class="nc">&nbsp;            customer.setEmail(this.txtEmail.getText());</b>
+<b class="nc">&nbsp;            customer.setPhone(this.txtPhone.getText());</b>
+<b class="nc">&nbsp;            customer.setBirthday((this.txtBirthday.getText() != null &amp;&amp; !this.txtBirthday.getText().isEmpty()) ?</b>
+<b class="nc">&nbsp;                    LocalDate.parse(this.txtBirthday.getText()</b>
+<b class="nc">&nbsp;                            .replaceAll(&quot;\\s&quot;, &quot;&quot;)</b>
+<b class="nc">&nbsp;                            .replaceAll(&quot;(^\\d\\.)&quot;, &quot;0$1&quot;)</b>
+<b class="nc">&nbsp;                            .replaceAll(&quot;(\\.)(\\d\\.)&quot;, &quot;.0$2&quot;)</b>
+<b class="nc">&nbsp;                            .replaceAll(&quot;\\.&quot;, &quot;. &quot;), DATE_TIME_FORMATTER) : null);</b>
+<b class="nc">&nbsp;            customer.setAddress(this.txtAddress.getText());</b>
+<b class="nc">&nbsp;            customer.setZipCode(this.txtZipCode.getText());</b>
+<b class="nc">&nbsp;            customer.setCity(this.txtCity.getText());</b>
+<b class="nc">&nbsp;            customer.setPatron(this.chkPatron.isSelected());</b>
+<b class="nc">&nbsp;            customer.setPhoto(this.filePhoto);</b>
+<b class="nc">&nbsp;            if (this.currentCustomer == null) {</b>
+<b class="nc">&nbsp;                this.currentCustomer = this.customerDAO.create(customer);</b>
+<b class="nc">&nbsp;                this.customerObservableList.add(currentCustomer);</b>
+&nbsp;            } else {
+<b class="nc">&nbsp;                this.customerDAO.update(customer);</b>
+&nbsp;            }
+<b class="nc">&nbsp;            this.tblCustomers.getSelectionModel().select(currentCustomer);</b>
+&nbsp;        }
+&nbsp;    }
+&nbsp;
+&nbsp;    @FXML
+&nbsp;    private void reset() {
+<b class="nc">&nbsp;        this.tblCustomers.getSelectionModel().clearSelection();</b>
+<b class="nc">&nbsp;        this.showCustomerDetails(null);</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    public void setCustomerDAO(CustomerDAO customerDAO) {
+<b class="nc">&nbsp;        this.customerDAO = customerDAO;</b>
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-11-15 11:14</div>
+</div>
+</body>
+</html>

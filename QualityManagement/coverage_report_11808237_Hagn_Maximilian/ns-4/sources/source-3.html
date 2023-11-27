@@ -1,0 +1,135 @@
+
+
+
+<!DOCTYPE html>
+<html id="htmlId">
+<head>
+  <title>Coverage Report > RentalActionButton</title>
+  <style type="text/css">
+    @import "../../css/coverage.css";
+    @import "../../css/idea.min.css";
+  </style>
+  <script type="text/javascript" src="../../js/highlight.min.js"></script>
+  <script type="text/javascript" src="../../js/highlightjs-line-numbers.min.js"></script>
+</head>
+
+<body>
+<div class="content">
+<div class="breadCrumbs">
+Current scope:     <a href="../../index.html">all classes</a>
+    <span class="separator">|</span>
+    <a href="../index.html">at.ac.tuwien.qs.movierental.ui.controls</a>
+</div>
+
+<h1>Coverage Summary for Class: RentalActionButton (at.ac.tuwien.qs.movierental.ui.controls)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">RentalActionButton</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    0%
+  </span>
+  <span class="absValue">
+    (0/11)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<pre>
+<code class="sourceCode" id="sourceCode">&nbsp;package at.ac.tuwien.qs.movierental.ui.controls;
+&nbsp;
+&nbsp;import at.ac.tuwien.qs.movierental.Rental;
+&nbsp;import javafx.scene.control.Button;
+&nbsp;import javafx.scene.control.TableCell;
+&nbsp;
+&nbsp;import java.util.function.Consumer;
+&nbsp;
+&nbsp;public class RentalActionButton&lt;TYPE&gt; extends TableCell&lt;TYPE, Rental&gt; {
+&nbsp;
+<b class="nc">&nbsp;    final Button payRentalButton = new Button(&quot;Rückgabe JA/NEIN&quot;);</b>
+<b class="nc">&nbsp;    final Button removeButton = new Button(&quot;Entfernen&quot;);</b>
+&nbsp;
+<b class="nc">&nbsp;    public RentalActionButton(Consumer&lt;Rental&gt; removeRentalButtonPressed, Consumer&lt;Rental&gt; payRentalButtonPressed) {</b>
+<b class="nc">&nbsp;        payRentalButton.setOnAction(event -&gt; payRentalButtonPressed.accept((Rental) RentalActionButton.this.getTableView().getItems().get(RentalActionButton.this.getIndex())));</b>
+<b class="nc">&nbsp;        removeButton.setOnAction(event -&gt; removeRentalButtonPressed.accept((Rental) RentalActionButton.this.getTableView().getItems().get(RentalActionButton.this.getIndex())));</b>
+&nbsp;    }
+&nbsp;
+&nbsp;    @Override
+&nbsp;    protected void updateItem(Rental item, boolean empty) {
+<b class="nc">&nbsp;        super.updateItem(item, empty);</b>
+<b class="nc">&nbsp;        if (item == null || empty) {</b>
+<b class="nc">&nbsp;            setGraphic(null);</b>
+&nbsp;        } else {
+<b class="nc">&nbsp;            if (item.getId() != null) {</b>
+<b class="nc">&nbsp;                setGraphic(payRentalButton);</b>
+&nbsp;            } else {
+<b class="nc">&nbsp;                setGraphic(removeButton);</b>
+&nbsp;            }
+&nbsp;        }
+&nbsp;    }
+&nbsp;}
+</code>
+</pre>
+</div>
+
+<script type="text/javascript">
+(function() {
+    var msie = false, msie9 = false;
+    /*@cc_on
+      msie = true;
+      @if (@_jscript_version >= 9)
+        msie9 = true;
+      @end
+    @*/
+
+    if (!msie || msie && msie9) {
+      hljs.highlightAll()
+      hljs.initLineNumbersOnLoad();
+    }
+})();
+</script>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2022-11-15 11:14</div>
+</div>
+</body>
+</html>

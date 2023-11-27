@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="dslab.transfer.TransferServerProtocolTest" tests="2" skipped="0" failures="0" errors="0" timestamp="2020-11-14T21:49:00" hostname="LUKAS-PC" time="6.071">
+  <properties/>
+  <testcase name="defaultDmtpInteractionTest" classname="dslab.transfer.TransferServerProtocolTest" time="3.062"/>
+  <testcase name="sendWithoutRecipient_returnsErrorOnSend" classname="dslab.transfer.TransferServerProtocolTest" time="3.009"/>
+  <system-out><![CDATA[IO-exception: Software caused connection abort: recv failed
+Message{from='trillian@earth.planet', to=[arthur@earth.planet], subject='hello', data='hello from junit'}
+Stopping Server
+Server Stopped.
+Server Stopped.
+IO-exception: Software caused connection abort: recv failed
+Stopping Server
+Server Stopped.
+Server Stopped.
+]]></system-out>
+  <system-err><![CDATA[Nov. 14, 2020 10:49:00 NACHM. dslab.transfer.TransferServerProtocolTest setUp
+INFO: Waiting for server socket to appear
+Nov. 14, 2020 10:49:03 NACHM. dslab.transfer.TransferServerProtocolTest setUp
+INFO: Waiting for server socket to appear
+Exception in thread "pool-2-thread-2" dslab.exceptions.ProtocolViolationException
+	at dslab.models.DMTPMessage.<init>(DMTPMessage.java:28)
+	at dslab.transfer.DMTPServerConnectionRunnable.run(DMTPServerConnectionRunnable.java:39)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+]]></system-err>
+</testsuite>

@@ -1,0 +1,18 @@
+Specification of Equivalence Partitions and Boundary Values for RingBuffer(int capacity)
+
+(1) Valid and Invalid Equivalence Partitions
+
+[-INF .. MIN_INT - 1]  -> invalid, throws OutOfMemoryError
+[MIN_INT .. -1]        -> invalid, throws NegativeArraySizeException
+[0 .. MAX_INT]         -> valid,   buffer with zero or positive capacity initialized
+[MAX_INT+1 .. +INF]    -> invalid, throws OutOfMemoryError
+
+
+(2) Refined Equivalence Partitions for Valid Partitions
+
+[-INF .. MIN_INT - 1]  -> invalid, throws OutOfMemoryError
+[-INF .. -1]           -> invalid, throws NegativeArraySizeException
+[0]                    -> invalid, buffer initialized, state:  EMPTY && FULL
+[1]                    -> valid,   buffer initialized, states: EMPTY || FULL
+[2 .. MAX_INT]            -> valid,   buffer initialized, states: EMPTY || FILLED || FULL
+[MAX_INT + 1 .. +INF]    -> invalid, throws OutOfMemoryError
